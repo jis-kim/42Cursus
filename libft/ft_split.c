@@ -1,0 +1,100 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/15 13:13:27 by jiskim            #+#    #+#             */
+/*   Updated: 2021/05/17 15:44:41 by jiskim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+static void			free_split(char **split, size_t index)
+{
+	while (index--)
+	{
+		free(split[index]);
+	}
+	free(split);
+}
+
+static	size_t		split_len(char const *s, char c)
+{
+	size_t	count;
+	size_t	flag;
+
+	count = 0;
+	flag = 1;
+	while (*s)
+	{
+		if (*s == c)
+			flag = 1;
+		else
+		{
+			if (flag)
+				count++;
+			flag = 0;
+		}
+		s++;
+	}
+	return (count);
+}
+
+static	const char	*create_ele(char **array, const char *s, char c, size_t i)
+{
+	const char	*tmp;
+	size_t		size;
+	char		*element;
+	size_t		index;
+
+	tmp = s;
+	size = 0;
+	index = 0;
+	while (*tmp != c && *tmp)
+	{
+		size++;
+		tmp++;
+	}
+	element = malloc(sizeof(char) * (size + 1));
+	if (!element)
+	{
+		free_split(array, i);
+		return (NULL);
+	}
+	array[i] = element;
+	while (*s != c && *s && index < size)
+		element[index++] = *s++;
+	element[index] = 0;
+	return (--s);
+}
+
+char				**ft_split(char const *s, char c)
+{
+	char	**result;
+	size_t	index;
+	int		flag;
+
+	if (!s)
+		return (NULL);
+	if (!(result = ft_calloc((split_len(s, c) + 1), sizeof(char *))))
+		return (0);
+	index = 0;
+	flag = 1;
+	while (*s)
+	{
+		if (*s == c)
+			flag = 1;
+		else
+		{
+			if (flag)
+				if (!(s = create_ele(result, s, c, index++)))
+					return (NULL);
+			flag = 0;
+		}
+		s++;
+	}
+	return (result);
+}
