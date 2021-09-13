@@ -1,40 +1,81 @@
 #include <stdarg.h>
 #include <stdio.h>
-#include <limits.h>
-#include "libft/libft.h"
-#define CONVERSION = "diuxXpcs%";
+#include "ft_printf.h"
 
-char * parse_format(char * a){
-	return a;
+static	int printf_error(t_format_option *options)
+{
+	free(options);
+	return (-1);
 }
 
-int ft_printf(const char *format, ...)
+static	void check_flags(const char **format, t_format_option *options)
 {
-	char	*format_ptr;
-	va_list ap;
-	int		ret;
-
-
-	format_ptr = format;
-	ret = 0;
-	va_start(ap, format);
-	while (*format_ptr != 0)
+	while (ft_strchr("-0# +", **format))
 	{
-		//%를 만나면
-		if (*format_ptr == '%')
-		{
-			//다음 글자가 conversion specifier인지 검사합니다.
-			format_ptr++;
-			if (ft_strchr("cspdiuxX%", *format_ptr) != NULL) //해당되는 글자가 있는 경우
-				format_ptr = parse_format(format_ptr);
-			else
-				return (0);	//어쩌지 ㅎ
-		}
-		else
-			write(1, format_ptr, 1);
-		format_ptr++;
+		if (**format == '-')
+			options->flag_minus = 1;
+		else if (**format == '0')
+			options->flag_zero = 1;
+		else if (**format == '#')
+			options->flag_hash = 1;
+		else if (**format == ' ')
+			options->flag_space = 1;
+		else if (**format == '+')
+			options->flag_plus = 1;
+		(*format)++;
+	}
+}
+
+static int check_width_precision(const char **format, t_format_option *options)
+{
+	const char	*width_end;
+
+	while(!ft_strchr("diuxXpcs%", **format)) //type 만나는 순간 끝남
+	{
+		if (**format == '.') //precision 있음
+			width_end = *format - 1; //. 전까지가 precision
+		if (**format == '\0') //문자열이 끝남 -> %는 나왔는데 해당 타입이 없음
+			return (printf_error(options));
 	}
 	return 0;
+}
+
+static	t_format_option *parse_format(const char **format)
+{
+	t_format_option	*options;
+	int	width_index;
+
+	options = NULL;
+	ft_bzero(options, sizeof(t_format_option));
+	check_flags(format, options);
+	check_width_precision(format, options);
+	return (options);
+}
+
+int	ft_printf(const char *format, ...)
+{
+	va_list			ap;
+	int				ret;
+	t_format_option	*parsed;
+
+	ret = 0;
+	va_start(ap, format);
+
+	while (*format != 0)
+	{
+		//%를 만나면
+		if (*format == '%')
+		{
+			format++;
+			parsed = parse_format(&format);
+		}
+		else
+		{
+			write(1, format++, 1);
+			ret++;
+		}
+	}
+	return (0);
 }
 
 int main(void)
@@ -46,7 +87,11 @@ int main(void)
 	// printf("%+d\n", 1024); //+1024
 	// printf("% d\n", 1024); // 1024
 	// printf("%+u\n", 1024);
+	// printf("%-d\n", 1024); //1024 양수면 - 무시
 	//printf("%a"); //컴파일 안됨
+	// printf("%12+d", 123); //여러개 있으면 하나로 처리 +가 가장 먼저 처리된다고 경고 뜸
+	// printf("%2147.121", 1234);
+	// printf("%+-+-+-   10d",1234); //+1234
 
 	return (0);
 }

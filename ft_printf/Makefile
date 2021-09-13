@@ -5,9 +5,14 @@ OBJS	= $(SRCS:.c=.o)
 NAME	= a.out
 
 all : $(NAME)
-	
+
 clean :
 	rm -f $(NAME)
 
-$(NAME) : 
-	$(CC) $(CFLAGS) $(SRCS)
+$(NAME) : $(LIB)
+	$(CC) $(CFLAGS) $(SRCS) ./libft/libft.a
+
+$(LIB) :
+	cd ./libft ; make
+
+re : clean all

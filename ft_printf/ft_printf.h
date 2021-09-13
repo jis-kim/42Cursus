@@ -6,15 +6,16 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 12:30:41 by jiskim            #+#    #+#             */
-/*   Updated: 2021/07/09 17:39:16 by jiskim           ###   ########.fr       */
+/*   Updated: 2021/09/13 19:52:05 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-# define INT_TYPE
-
 #ifndef FT_PRINTF_H
-//flag -> width(숫자) -> .precision(숫자)
+# define FT_PRINTF_H
+#include "libft/libft.h"
+#include <stdarg.h>
+
+/*flag -> width -> .precision*/
 typedef	struct s_format_option
 {
 	char	type;
@@ -26,4 +27,6 @@ typedef	struct s_format_option
 	int		flag_hash;
 	int		flag_space;
 	int		flag_plus;
-}				t_format_option
+}				t_format_option;
+
+#endif
