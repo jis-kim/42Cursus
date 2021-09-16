@@ -43,7 +43,6 @@ static int check_width_precision(const char **format, t_format_option *options)
 static	t_format_option *parse_format(const char **format)
 {
 	t_format_option	*options;
-	int	width_index;
 
 	options = NULL;
 	ft_bzero(options, sizeof(t_format_option));
@@ -91,7 +90,7 @@ int main(void)
 	//printf("%a"); //컴파일 안됨
 	// printf("%12+d", 123); //여러개 있으면 하나로 처리 +가 가장 먼저 처리된다고 경고 뜸
 	// printf("%2147.121", 1234);
-	// printf("%+-+-+-   10d",1234); //+1234
+	printf("%+-+-+-10d",1234); //+1234
 
 	return (0);
 }
