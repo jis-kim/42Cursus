@@ -1,71 +1,53 @@
-#include <stdarg.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/21 02:59:27 by jiskim            #+#    #+#             */
+/*   Updated: 2021/09/21 06:50:25 by jiskim           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-static void	check_flags(const char **format, t_format_option *options)
+int	print_by_type(t_format_option *options, va_list ap)
 {
-	while (ft_strchr("-0# +", **format))
-	{
-		if (**format == '-')
-			options->flag_minus = 1;
-		else if (**format == '0')
-			options->flag_zero = 1;
-		else if (**format == '#')
-			options->flag_hash = 1;
-		else if (**format == ' ')
-			options->flag_space = 1;
-		else if (**format == '+')
-			options->flag_plus = 1;
-		(*format)++;
-	}
-}
+	int	len;
 
-/* after check flags */
-static void check_width_precision(const char **format, t_format_option *options)
-{
-	if (ft_isdigit(**format))
-		options->width = ft_atoi(*format);
-	while(ft_isdigit(**format))
-		(*format)++;
-	if (**format == '.')
-		options->precision = ft_atoi(++(*format));
-	while(ft_isdigit(**format))
-		(*format)++;
-}
-
-static void check_type(const char **format, t_format_option *options)
-{
-	if(ft_strchr("cspdiuxX%", **format))
-		options->type = **format;
-	(*format)++;
-}
-
-static	t_format_option *parse_format(const char **format)
-{
-	t_format_option	*options;
-
-	options = malloc(sizeof(t_format_option));
-	ft_bzero(options, sizeof(t_format_option));
-	check_flags(format, options);
-	check_width_precision(format, options);
-	check_type(format, options);
-	return (options);
+	len = 0;
+	if (ft_strchr("di", options->type))
+		len = ft_print_dec(options, va_arg(ap, int));
+	//else if (ft_strchr("xXu", options->type))
+	//	len = ft_print_unsigned(options, va_arg(ap, unsigned int));
+	//else if (options->type == 'c')
+	//	len = ft_print_char(options, va_arg(ap, int));
+	//else if (options->type == 'p')
+	//	len = ft_print_pointer(options, va_arg(ap, void *));
+	//else if (options->type == 's')
+	//	len = ft_print_string(options, va_arg(ap, void *));
+	//return (len);
+	return (len);
 }
 
 int	ft_printf(const char *format, ...)
 {
-	// va_list			ap;
+	va_list			ap;
+	t_format_option	*options;
 	int				ret;
-	t_format_option	*parsed;
 
 	ret = 0;
-	// va_start(ap, format);
+	options = malloc(sizeof(t_format_option));
+	if (!options)
+		return (-1);
+	va_start(ap, format);
 	while (*format != 0)
 	{
 		if (*format == '%')
 		{
-			format++;
-			parsed = parse_format(&format); //두 문장을 같이 쓴다면 r-value라고 안된다고 한다.
+			parse_format(&format, options);
+			ret += print_by_type(options, ap);
 		}
 		else
 		{
@@ -73,26 +55,13 @@ int	ft_printf(const char *format, ...)
 			ret++;
 		}
 	}
-	// va_end(ap);
+	va_end(ap);
+	free(options);
 	return (ret);
 }
 
+#include <stdio.h>
 int main(void)
 {
-	// printf("%-d\n", -2147483648); //-2147483648
-	// printf("%04d\n", -4); //-004
-	// printf("%.4d\n", -4); //-0004
-	// printf("%+x\n", 1024); //undefined behavior
-	// printf("%+d\n", 1024); //+1024
-	// printf("% d\n", 1024); // 1024
-	// printf("%+u\n", 1024);
-	// printf("%-d\n", 1024); //1024 양수면 - 무시
-	//printf("%a"); //컴파일 안됨
-	// printf("%12+d", 123); //여러개 있으면 하나로 처리 +가 가장 먼저 처리된다고 경고 뜸
-	// printf("%2147.121", 1234);
-	// printf("%+-+-+-10d",1234); //+1234
-	// printf("%.-1s", "abcde");//warn
-	ft_printf("%01234d", 1);
-
-	return (0);
+	ft_printf("%04d", 4);
 }
