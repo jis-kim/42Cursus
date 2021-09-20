@@ -3,12 +3,12 @@ CFLAGS	= -Wall -Wextra -Werror
 SRCS	= $(wildcard ./*.c)
 OBJS	= $(SRCS:.c=.o)
 NAME	= a.out
-LIB		= ./libft.a
+LIB		= ./libft/libft.a
 
 all : $(NAME)
 
 clean :
-	rm -f $(NAME)
+	rm -f $(NAME); cd libft; make fclean; cd ..;
 
 $(NAME) : $(LIB)
 	$(CC) $(CFLAGS) $(SRCS) ./libft/libft.a

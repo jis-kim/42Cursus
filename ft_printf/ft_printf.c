@@ -2,13 +2,7 @@
 #include <stdio.h>
 #include "ft_printf.h"
 
-static	int printf_error(t_format_option *options)
-{
-	free(options);
-	return (-1);
-}
-
-static	void check_flags(const char **format, t_format_option *options)
+static void	check_flags(const char **format, t_format_option *options)
 {
 	while (ft_strchr("-0# +", **format))
 	{
@@ -26,47 +20,52 @@ static	void check_flags(const char **format, t_format_option *options)
 	}
 }
 
-static int check_width_precision(const char **format, t_format_option *options)
+/* after check flags */
+static void check_width_precision(const char **format, t_format_option *options)
 {
-	const char	*width_end;
+	if (ft_isdigit(**format))
+		options->width = ft_atoi(*format);
+	while(ft_isdigit(**format))
+		(*format)++;
+	if (**format == '.')
+		options->precision = ft_atoi(++(*format));
+	while(ft_isdigit(**format))
+		(*format)++;
+}
 
-	while(!ft_strchr("diuxXpcs%", **format)) //type 만나는 순간 끝남
-	{
-		if (**format == '.') //precision 있음
-			width_end = *format - 1; //. 전까지가 precision
-		if (**format == '\0') //문자열이 끝남 -> %는 나왔는데 해당 타입이 없음
-			return (printf_error(options));
-	}
-	return 0;
+static void check_type(const char **format, t_format_option *options)
+{
+	if(ft_strchr("cspdiuxX%", **format))
+		options->type = **format;
+	(*format)++;
 }
 
 static	t_format_option *parse_format(const char **format)
 {
 	t_format_option	*options;
 
-	options = NULL;
+	options = malloc(sizeof(t_format_option));
 	ft_bzero(options, sizeof(t_format_option));
 	check_flags(format, options);
 	check_width_precision(format, options);
+	check_type(format, options);
 	return (options);
 }
 
 int	ft_printf(const char *format, ...)
 {
-	va_list			ap;
+	// va_list			ap;
 	int				ret;
 	t_format_option	*parsed;
 
 	ret = 0;
-	va_start(ap, format);
-
+	// va_start(ap, format);
 	while (*format != 0)
 	{
-		//%를 만나면
 		if (*format == '%')
 		{
 			format++;
-			parsed = parse_format(&format);
+			parsed = parse_format(&format); //두 문장을 같이 쓴다면 r-value라고 안된다고 한다.
 		}
 		else
 		{
@@ -74,7 +73,8 @@ int	ft_printf(const char *format, ...)
 			ret++;
 		}
 	}
-	return (0);
+	// va_end(ap);
+	return (ret);
 }
 
 int main(void)
@@ -90,7 +90,9 @@ int main(void)
 	//printf("%a"); //컴파일 안됨
 	// printf("%12+d", 123); //여러개 있으면 하나로 처리 +가 가장 먼저 처리된다고 경고 뜸
 	// printf("%2147.121", 1234);
-	printf("%+-+-+-10d",1234); //+1234
+	// printf("%+-+-+-10d",1234); //+1234
+	// printf("%.-1s", "abcde");//warn
+	ft_printf("%01234d", 1);
 
 	return (0);
 }
