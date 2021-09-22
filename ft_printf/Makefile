@@ -1,32 +1,39 @@
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	=
 SRCS	= $(wildcard ./*.c)
 OBJS	= $(SRCS:.c=.o)
-NAME	= a.out
-LIB		= ./libft/libft.a
+NAME	= libftprintf.a
 
-all : $(NAME)
-
-clean :
-	rm -f $(NAME); cd libft; make fclean; cd ..;
-
-$(NAME) : $(LIB)
-	$(CC) $(CFLAGS) $(SRCS) ./libft/libft.a
-
-$(LIB) :
-	cd ./libft ; make re
+LIBDIR	= ./libft
+LIB		= $(LIBDIR)/libft.a
 
 D_TEST	= a.out.dSYM
 DFLAG	= -g3
 
-libft: $(LIB)
+all : $(NAME)
+
+clean :
+	rm -f $(NAME) $(OBJS)
+	make -C $(LIBDIR) fclean
+
+$(NAME) : $(LIB) $(OBJS)
+	ar rcs $@ $(OBJS)
+
+$(LIB) :
+	make -C $(LIBDIR)
+	cp $@ $(NAME)
 
 $(D_TEST) : $(LIB)
-	$(CC) $(CFLAGS) $(DFLAG) $(SRCS) ./libft/libft.a
+	$(CC) $(CFLAGS) $(DFLAG) $(LIB) $(SRCS)
 
 debug : $(D_TEST)
 
 dclean :
 	rm -rf $(D_TEST)
 
-re : clean all
+fclean : clean dclean
+	rm -f a.out
+
+bonus :
+
+re : fclean all
