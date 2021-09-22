@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 02:59:35 by jiskim            #+#    #+#             */
-/*   Updated: 2021/09/22 21:03:43 by jiskim           ###   ########.fr       */
+/*   Updated: 2021/09/22 21:15:14 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static int	get_decimal_len(char type, int n)
 	return (len);
 }
 
-int	ft_unsigned_putnbr(unsigned int value, int length)
+static int	ft_unsigned_putnbr(unsigned int value, int length)
 {
 	unsigned int	power_ten;
 	int				quotient;
@@ -109,9 +109,9 @@ int	ft_print_dec(t_format_option *opt, int value)
 	if (opt->precision < 0 && opt->flag_zero && !opt->flag_minus)
 		zero = opt->width - opt->length;
 	else if (opt->flag_minus)
-		right_space = opt->width - MAX(opt->precision, opt->length);
+		right_space = opt->width - max(opt->precision, opt->length);
 	else
-		left_space = opt->width - MAX(opt->precision, opt->length);
+		left_space = opt->width - max(opt->precision, opt->length);
 	ret += ft_print_space(left_space);
 	if (opt->type != 'u')
 		ret += ft_print_sign(opt, value);

@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 12:30:41 by jiskim            #+#    #+#             */
-/*   Updated: 2021/09/22 20:03:05 by jiskim           ###   ########.fr       */
+/*   Updated: 2021/09/22 21:15:30 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
-# define MAX(a, b) (a > b ? a : b)
 # include "libft/libft.h"
 # include <stdarg.h>
 
@@ -39,5 +38,6 @@ int		ft_print_space(int n);
 int		ft_print_zero(int n);
 int		ft_print_sign(t_format_option *opt, int value);
 int		ft_print_hex(t_format_option *opt, unsigned int value);
+int		max(int a, int b);
 
 #endif

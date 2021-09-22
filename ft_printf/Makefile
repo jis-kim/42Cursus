@@ -1,5 +1,5 @@
 CC		= gcc
-CFLAGS	=
+CFLAGS	= -Wall -Wextra -Werror
 SRCS	= $(wildcard ./*.c)
 OBJS	= $(SRCS:.c=.o)
 NAME	= libftprintf.a
@@ -34,6 +34,8 @@ dclean :
 fclean : clean dclean
 	rm -f a.out
 
-bonus :
+bonus : re
 
 re : fclean all
+
+.PHONY: all clean fclean bonus re dclean
