@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 03:41:38 by jiskim            #+#    #+#             */
-/*   Updated: 2021/09/22 20:04:24 by jiskim           ###   ########.fr       */
+/*   Updated: 2021/09/23 16:27:44 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int	ft_print_sign(t_format_option *opt, int value)
 	char	sign;
 
 	ret = 1;
-	if (ft_strchr("xX", opt->type) && opt->flag_hash)
+	if (opt->type == 'p' || (ft_strchr("xX", opt->type) && opt->flag_hash))
 	{
-		if (opt->type == 'x')
+		if (ft_strchr("xp", opt->type))
 			write(1, "0x", 2);
 		else if (opt->type == 'X')
 			write(1, "0X", 2);

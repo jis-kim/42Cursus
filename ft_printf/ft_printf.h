@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/09 12:30:41 by jiskim            #+#    #+#             */
-/*   Updated: 2021/09/22 21:15:30 by jiskim           ###   ########.fr       */
+/*   Updated: 2021/09/23 16:47:08 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int		ft_print_space(int n);
 int		ft_print_zero(int n);
 int		ft_print_sign(t_format_option *opt, int value);
 int		ft_print_hex(t_format_option *opt, unsigned int value);
+int		ft_print_pointer(t_format_option *opt, unsigned long long value);
 int		max(int a, int b);
 
 #endif
