@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 20:49:04 by jiskim            #+#    #+#             */
-/*   Updated: 2021/09/23 17:10:51 by jiskim           ###   ########.fr       */
+/*   Updated: 2021/09/24 16:43:59 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ static int	get_hex_len(unsigned long long n)
 static int	ft_putnbr_hex(char type, unsigned long long value, int length)
 {
 	unsigned long long	power_hex;
-	int				quotient;
-	int				ret;
-	char			converted_value;
+	int					quotient;
+	int					ret;
+	char				converted_value;
 
 	power_hex = 1;
 	ret = 0;

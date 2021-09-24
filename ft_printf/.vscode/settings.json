@@ -1,5 +1,8 @@
 {
 	"files.associations": {
-		"libft.h": "c"
+		"libft.h": "c",
+		"ostream": "cpp",
+		"chrono": "c",
+		"ft_printf.h": "c"
 	}
 }
