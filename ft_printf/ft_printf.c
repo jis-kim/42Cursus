@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 02:59:27 by jiskim            #+#    #+#             */
-/*   Updated: 2021/09/24 19:06:29 by jiskim           ###   ########.fr       */
+/*   Updated: 2021/09/24 19:32:40 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	print_by_type(t_format_option *opt, va_list *ap)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	if (ft_strchr("diu", opt->type))
@@ -42,7 +42,7 @@ int	ft_printf(const char *format, ...)
 	opt = malloc(sizeof(t_format_option));
 	if (!opt)
 		return (-1);
-	va_start(ap, format); //ap를 초기화한다.
+	va_start(ap, format);
 	while (*format != 0)
 	{
 		if (*format == '%')
