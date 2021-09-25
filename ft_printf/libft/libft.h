@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 18:43:21 by jiskim            #+#    #+#             */
-/*   Updated: 2021/09/24 18:54:38 by jiskim           ###   ########.fr       */
+/*   Updated: 2021/09/25 14:01:23 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ size_t			ft_strlen(const char *src);
 char			*ft_strchr(const char *s, int c);
 int				ft_atoi(const char *str);
 int				ft_isdigit(int c);
-char			*ft_strdup(const char *src);
 int				ft_putstr(char *s, int len);
 
 #endif

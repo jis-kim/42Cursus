@@ -6,21 +6,13 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/22 21:13:50 by jiskim            #+#    #+#             */
-/*   Updated: 2021/09/24 18:26:22 by jiskim           ###   ########.fr       */
+/*   Updated: 2021/09/25 13:39:56 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	max(int a, int b)
 {
 	if (a > b)
-		return (a);
-	else
-		return (b);
-}
-
-int	min(int a, int b)
-{
-	if (a < b)
 		return (a);
 	else
 		return (b);
