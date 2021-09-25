@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 02:59:35 by jiskim            #+#    #+#             */
-/*   Updated: 2021/09/25 16:21:06 by jiskim           ###   ########.fr       */
+/*   Updated: 2021/09/25 17:11:44 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	get_unsigned_len(t_format_option *opt, unsigned int n)
 	len = 0;
 	if (n == 0)
 	{
-		if(opt->precision == 0 || opt->precision < -1)
+		if (opt->precision == 0 || opt->precision < -1)
 			return (0);
 		return (1);
 	}
@@ -38,7 +38,7 @@ static int	get_decimal_len(t_format_option *opt, int n)
 	len = 0;
 	if (n == 0)
 	{
-		if(opt->precision == 0 || opt->precision < -1)
+		if (opt->precision == 0 || opt->precision < -1)
 			return (0);
 		return (1);
 	}

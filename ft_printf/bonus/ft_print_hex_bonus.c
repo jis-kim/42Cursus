@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_hex.c                                     :+:      :+:    :+:   */
+/*   ft_print_hex_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 20:49:04 by jiskim            #+#    #+#             */
-/*   Updated: 2021/09/25 16:19:15 by jiskim           ###   ########.fr       */
+/*   Updated: 2021/09/25 17:12:07 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 static int	get_hex_len(t_format_option *opt, unsigned long long n)
 {
@@ -19,7 +19,7 @@ static int	get_hex_len(t_format_option *opt, unsigned long long n)
 	len = 0;
 	if (n == 0)
 	{
-		if(opt->precision == 0 || opt->precision < -1)
+		if (opt->precision == 0 || opt->precision < -1)
 			return (0);
 		return (1);
 	}

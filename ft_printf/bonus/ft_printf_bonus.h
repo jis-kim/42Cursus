@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_printf_bonus.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/09 12:30:41 by jiskim            #+#    #+#             */
-/*   Updated: 2021/09/24 18:42:21 by jiskim           ###   ########.fr       */
+/*   Created: 2021/09/25 17:12:31 by jiskim            #+#    #+#             */
+/*   Updated: 2021/09/25 17:12:33 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef FT_PRINTF_BONUS_H
+# define FT_PRINTF_BONUS_H
 # define INT_MIN -2147483648
 # define INT_MAX 2147483647
-# include "libft/libft.h"
+# include "../libft/libft.h"
 # include <stdarg.h>
 
 /*flag -> width -> .precision*/

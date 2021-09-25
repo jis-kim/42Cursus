@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_format.c                                     :+:      :+:    :+:   */
+/*   parse_format_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 06:35:39 by jiskim            #+#    #+#             */
-/*   Updated: 2021/09/22 19:28:40 by jiskim           ###   ########.fr       */
+/*   Updated: 2021/09/25 16:40:35 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "ft_printf_bonus.h"
 
 static void	check_flags(const char **format, t_format_option *opt)
 {

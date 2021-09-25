@@ -6,16 +6,18 @@
 #    By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/24 19:52:11 by jiskim            #+#    #+#              #
-#    Updated: 2021/09/25 16:28:49 by jiskim           ###   ########.fr        #
+#    Updated: 2021/09/25 16:39:50 by jiskim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror
-SRCS	=	calc_mac.c ft_print_char.c ft_print_dec.c ft_print_hex.c\
+SRCS	=	calc_max.c ft_print_char.c ft_print_dec.c ft_print_hex.c\
 			ft_print_options.c ft_printf.c parse_format.c
 OBJS	=	$(SRCS:.c=.o)
-SRCS_B	=	$(addprefix $(BONDIR)/, SRCS)
+SRCS_B	=	$(addprefix $(BONDIR)/, calc_max_bonus.c ft_print_char_bonus.c\
+			ft_print_dec_bonus.c ft_print_hex_bonus.c ft_print_options_bonus.c\
+			ft_printf_bonus.c parse_format_bonus.c)
 OBJS_B	=	$(SRCS_B:.c=.o)
 NAME	=	libftprintf.a
 BONDIR	=	./bonus
@@ -35,11 +37,11 @@ endif
 all	: $(NAME)
 
 clean :
-	rm -f $(NAME) $(OBJS)
+	rm -f $(NAME) $(OBJS) $(OBJS_B)
 	make -C $(LIBDIR) fclean
 
-$(NAME) : $(LIB) $(OBJS)
-	ar rcs $@ $(OBJS)
+$(NAME) : $(LIB) $(OBJS_FILES)
+	ar rcs $@ $(OBJS_FILES)
 
 $(LIB) :
 	make -C $(LIBDIR)
