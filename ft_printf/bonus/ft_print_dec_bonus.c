@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 02:59:35 by jiskim            #+#    #+#             */
-/*   Updated: 2021/09/25 16:21:06 by jiskim           ###   ########.fr       */
+/*   Updated: 2021/09/25 16:18:58 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,6 @@ int	ft_putnbr_dec(char type, int value, int length)
 	char	converted_value;
 
 	power_ten = 1;
-	if (length == 0)
-		power_ten = 0;
 	if (type == 'u')
 		return ((ft_unsigned_putnbr((unsigned int)value, length)));
 	ret = 0;

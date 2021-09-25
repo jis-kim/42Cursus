@@ -6,23 +6,33 @@
 #    By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/24 19:52:11 by jiskim            #+#    #+#              #
-#    Updated: 2021/09/24 19:52:12 by jiskim           ###   ########.fr        #
+#    Updated: 2021/09/25 16:28:49 by jiskim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
-SRCS	= $(wildcard ./*.c)
-OBJS	= $(SRCS:.c=.o)
-NAME	= libftprintf.a
+CC		=	gcc
+CFLAGS	=	-Wall -Wextra -Werror
+SRCS	=	calc_mac.c ft_print_char.c ft_print_dec.c ft_print_hex.c\
+			ft_print_options.c ft_printf.c parse_format.c
+OBJS	=	$(SRCS:.c=.o)
+SRCS_B	=	$(addprefix $(BONDIR)/, SRCS)
+OBJS_B	=	$(SRCS_B:.c=.o)
+NAME	=	libftprintf.a
+BONDIR	=	./bonus
 
-LIBDIR	= ./libft
-LIB		= $(LIBDIR)/libft.a
+LIBDIR	=	./libft
+LIB		=	$(LIBDIR)/libft.a
 
-D_TEST	= a.out.dSYM
-DFLAG	= -g3
+D_TEST	=	a.out.dSYM
+DFLAG	=	-g3
 
-all : $(NAME)
+ifdef SRCS_B_RELINK
+	OBJS_FILES = $(OBJS_B)
+else
+	OBJS_FILES = $(OBJS)
+endif
+
+all	: $(NAME)
 
 clean :
 	rm -f $(NAME) $(OBJS)
@@ -44,9 +54,10 @@ dclean :
 	rm -rf $(D_TEST)
 
 fclean : clean dclean
-	rm -f a.out
+	rm -f $(NAME)
 
-bonus : re
+bonus :
+	make SRCS_B_RELINK=1 all
 
 re : fclean all
 
