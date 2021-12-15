@@ -6,12 +6,12 @@
 #    By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 17:07:23 by jiskim            #+#    #+#              #
-#    Updated: 2021/12/15 21:49:31 by jiskim           ###   ########.fr        #
+#    Updated: 2021/12/16 02:22:05 by jiskim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+#CFLAGS = -Wall -Wextra -Werror
 MLXDIR = ./mlx
 LIB = -L$(MLXDIR) -lmlx -framework OpenGl -framework Appkit
 
@@ -35,9 +35,9 @@ clean :
 	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -rf $(NAME) so_long.dSYM
 
-debug : $(OBJS)
+debug : fclean $(OBJS)
 	$(MLXLIB)
 	$(CC) -g3 -fsanitize=address $(LIB) $(SRCS) -o $(NAME)
 
