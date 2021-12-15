@@ -6,7 +6,7 @@
 #    By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 17:07:23 by jiskim            #+#    #+#              #
-#    Updated: 2021/12/15 02:30:14 by jiskim           ###   ########.fr        #
+#    Updated: 2021/12/15 21:49:31 by jiskim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CFLAGS = -Wall -Wextra -Werror
 MLXDIR = ./mlx
 LIB = -L$(MLXDIR) -lmlx -framework OpenGl -framework Appkit
 
-SRCS = a.c
+SRCS = $(wildcard ./srcs/*.c)
 OBJS = $(SRCS:.c=.o)
 
 NAME = so_long
@@ -36,5 +36,9 @@ clean :
 
 fclean: clean
 	rm -f $(NAME)
+
+debug : $(OBJS)
+	$(MLXLIB)
+	$(CC) -g3 -fsanitize=address $(LIB) $(SRCS) -o $(NAME)
 
 re : fclean all
