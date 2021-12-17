@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 00:44:51 by jiskim            #+#    #+#             */
-/*   Updated: 2021/12/17 20:28:44 by jiskim           ###   ########.fr       */
+/*   Updated: 2021/12/17 20:36:10 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int check_player_movable(int x, int y, t_data *data)
 	if (x < 0 || y < 0 || x >= data->map_width || y >= data->map_height)
 		return (0);
 	loc_info = data->map[x][y];
-	return (loc_info == '0');
+	return (loc_info != '1');
 }
 
 static void move_player(int keycode, t_data *data)
