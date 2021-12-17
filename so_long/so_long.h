@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 11:44:49 by jiskim            #+#    #+#             */
-/*   Updated: 2021/12/16 02:45:31 by jiskim           ###   ########.fr       */
+/*   Updated: 2021/12/17 20:12:08 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@
 #define KEY_ESC 53;
 #define IMG_SIZE 64;
 
-#define CHAR_PATH "./img/chadul_front_64.xpm";
-#define BACK_PATH "./img/grass_64.xpm";
-#define OB_PATH "./img/cliff_64.xpm";
+#define CHAR_PATH "/Users/jisukim/42Cursus/so_long/img/chadul_front_64.xpm";
+#define BACK_PATH "/Users/jisukim/42Cursus/so_long/img/grass_64.xpm";
+#define OB_PATH "/Users/jisukim/42Cursus/so_long/img/cliff_64.xpm";
 
 #include "./mlx/mlx.h"
 #include <stdlib.h>
+
+#include <string.h> //제외필수
 
 typedef struct s_component
 {

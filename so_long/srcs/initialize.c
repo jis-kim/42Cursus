@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 01:09:30 by jiskim            #+#    #+#             */
-/*   Updated: 2021/12/16 02:52:19 by jiskim           ###   ########.fr       */
+/*   Updated: 2021/12/17 20:26:31 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,31 +19,37 @@ void show_map(t_data *data)
 {
 	int i;
 	int j;
+	t_component *component;
 
 	i = 0;
 	j = 0;
 
-	char map[9][9] = {
-			{'1', '1', '1', '1', '1', '1', '1', '1', '1',},
-			{'1', 'P', '0', '0', '0', '0', '0', '0', '1',},
-			{'1', '0', '0', '0', '0', '0', '0', '0', '1',},
-			{'1', '0', '0', '0', '0', '0', '0', '0', '1',},
-			{'1', '0', '0', '0', '0', '0', '0', '0', '1',},
-			{'1', '0', '0', '0', '0', '0', '0', '0', '1',},
-			{'1', '0', '0', '0', '0', '0', '0', '0', '1',},
-			{'1', '0', '0', '0', '0', '0', '0', '0', '1',},
-			{'1', '1', '1', '1', '1', '1', '1', '1', '1',}
-		};
+	strcpy(data->map[0], "111111111");
+	strcpy(data->map[1], "1P0000001");
+	strcpy(data->map[2], "100000001");
+	strcpy(data->map[3], "100000001");
+	strcpy(data->map[4], "100000001");
+	strcpy(data->map[5], "100000001");
+	strcpy(data->map[6], "100000001");
+	strcpy(data->map[7], "100000001");
+	strcpy(data->map[8], "111111111");
 
 	while (i < 9) {
 		j = 0;
 		while (j < 9) {
-			if (map[i][j] == 'P')
-				mlx_put_image_to_window(data->mlx, data->mlx_win, data->player->img, j*64, i*64);
-			else if (map[i][j] == '1')
-				mlx_put_image_to_window(data->mlx, data->mlx_win, data->obstacle->img, j*64, i*64);
-			else
-				mlx_put_image_to_window(data->mlx, data->mlx_win, data->background->img, j*64, i*64);
+			if (data->map[i][j] == '1')
+				component = data->obstacle;
+			else{
+				component = data->background;
+				if (data->map[i][j] == 'P')
+				{
+					mlx_put_image_to_window(data->mlx, data->mlx_win, component->img, j*64, i*64);
+					component = data->player;
+					component->x = j;
+					component->y = i;
+				}
+			}
+			mlx_put_image_to_window(data->mlx, data->mlx_win, component->img, j*64, i*64);
 			j++;
 		}
 		i++;
@@ -71,19 +77,17 @@ void set_component(t_data *data)
 
 void init_data(t_data *data)
 {
-	t_component player;
-	t_component background;
-	t_component obstacle;
-
 	data->mlx = mlx_init();
 	data->mlx_win = mlx_new_window(data->mlx, 576, 576, "so_long");
-	data->player = &player;
-	data->background = &background;
-	data->obstacle = &obstacle;
+	data->player = malloc(sizeof(t_component));
+	data->background = malloc(sizeof(t_component));
+	data->obstacle = malloc(sizeof(t_component));
 	data->player->path = CHAR_PATH;
 	data->background->path = BACK_PATH;
 	data->obstacle->path = OB_PATH;
-
+	data->map = malloc(sizeof(char *) * 9);
+	for (int i = 0; i < 9; i++)
+		data->map[i] = malloc(sizeof(char) * 10);
 	//char map[9][9] = {
 	//	{'1', '1', '1', '1', '1', '1', '1', '1', '1',},
 	//	{'1', 'P', '0', '0', '0', '0', '0', '0', '1',},
@@ -105,8 +109,8 @@ void init_data(t_data *data)
 	//int j = 0;
 	//i = 0;
 	//while (i)
-	//data->map_height = 9;
-	//data->map_width = 9;
+	data->map_height = 9;
+	data->map_width = 9;
 
 	set_component(data);
 }
