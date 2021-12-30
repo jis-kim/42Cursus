@@ -6,6 +6,9 @@
 		"string": "c",
 		"string_view": "c",
 		"vector": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"so_long.h": "c",
+		"string.h": "c",
+		"fcntl.h": "c"
 	}
 }

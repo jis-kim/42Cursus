@@ -6,7 +6,7 @@
 #    By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 17:07:23 by jiskim            #+#    #+#              #
-#    Updated: 2021/12/16 02:22:05 by jiskim           ###   ########.fr        #
+#    Updated: 2021/12/31 00:25:38 by jiskim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = gcc
 MLXDIR = ./mlx
 LIB = -L$(MLXDIR) -lmlx -framework OpenGl -framework Appkit
 
-SRCS = $(wildcard ./srcs/*.c)
+SRCS = $(wildcard ./srcs/*.c)  $(wildcard ./srcs/get_next_line/*.c)
 OBJS = $(SRCS:.c=.o)
 
 NAME = so_long

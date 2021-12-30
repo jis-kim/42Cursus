@@ -4,12 +4,13 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": "Debug",
             "type": "lldb",
             "request": "launch",
             "program": "${fileDirname}/../so_long",
-            "args": [],
+            "args": ["../map.ber"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],

@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 14:56:13 by jiskim            #+#    #+#             */
-/*   Updated: 2021/05/26 17:32:28 by jiskim           ###   ########.fr       */
+/*   Updated: 2021/12/30 22:53:46 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@ char	*ft_strchr(const char *s, int c)
 	while (*s)
 	{
 		if (*s == (char)c)
-			return (char *)s;
+			return ((char *)s);
 		s++;
 	}
 	if (c == 0)
-		return (char *)s;
+		return ((char *)s);
 	return (0);
 }
 
 size_t	ft_strlen(const char *str)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (*str != '\0')
