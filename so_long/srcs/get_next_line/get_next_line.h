@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook.c                                             :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/15 21:33:41 by jiskim            #+#    #+#             */
-/*   Updated: 2021/12/17 19:41:10 by jiskim           ###   ########.fr       */
+/*   Created: 2021/05/20 15:00:03 by jiskim            #+#    #+#             */
+/*   Updated: 2021/05/26 17:49:19 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	close_window(void *args)
-{
-	t_data *data;
+# include <unistd.h>
+# include <stdlib.h>
 
-	data = (t_data *)(args);
-	exit(0);
-	return 0;
-}
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 12
+# endif
+
+# ifndef OPEN_MAX
+#  define OPEN_MAX 10240
+# endif
+
+char	*ft_strchr(const char *s, int c);
+size_t	ft_strlen(const char *str);
+char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strdup(const char *src);
+int		get_next_line(int fd, char **line);
+
+#endif
