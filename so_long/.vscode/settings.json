@@ -9,6 +9,14 @@
 		"stdlib.h": "c",
 		"so_long.h": "c",
 		"string.h": "c",
-		"fcntl.h": "c"
+		"fcntl.h": "c",
+		"get_next_line.h": "c",
+		"__bit_reference": "c",
+		"algorithm": "c",
+		"bitset": "c",
+		"chrono": "c",
+		"unordered_map": "c",
+		"__string": "c",
+		"locale": "c"
 	}
 }

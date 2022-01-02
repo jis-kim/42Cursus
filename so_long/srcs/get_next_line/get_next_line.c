@@ -6,11 +6,11 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 14:56:00 by jiskim            #+#    #+#             */
-/*   Updated: 2021/12/31 00:28:43 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/01/01 18:59:31 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../../so_long.h"
 
 static int	buf_split(char **buf_remain, char **line, int check_read)
 {
@@ -18,23 +18,15 @@ static int	buf_split(char **buf_remain, char **line, int check_read)
 	char	*buf_newline;
 
 	if (*buf_remain == NULL)
-	{
 		*buf_remain = ft_strdup("");
-		if (!(*buf_remain))
-			return (-1);
-	}
 	buf_newline = ft_strchr(*buf_remain, '\n');
 	if (buf_newline)
 	{
 		*buf_newline++ = '\0';
 		*line = ft_strdup(*buf_remain);
-		if (!*line)
-			return (-1);
 		tmp = *buf_remain;
 		*buf_remain = ft_strdup(buf_newline);
 		free(tmp);
-		if (!(*buf_remain))
-			return (-1);
 		return (1);
 	}
 	else if (check_read == 0 && !buf_newline)
@@ -61,9 +53,7 @@ int	get_next_line(int fd, char **line)
 	if (!line || fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0
 		|| read(fd, *line, 0) == -1)
 		return (-1);
-	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buf)
-		return (-1);
+	buf = ft_calloc(sizeof(char) * (BUFFER_SIZE + 1));
 	success = buf_split(&buf_remain, line, 1);
 	if (success != 0)
 		return (ft_free(success, buf));
@@ -72,8 +62,6 @@ int	get_next_line(int fd, char **line)
 	{
 		buf[check_read] = '\0';
 		buf_remain = ft_strjoin(buf_remain, buf);
-		if (!buf_remain)
-			return (ft_free(-1, buf));
 		success = buf_split(&buf_remain, line, check_read);
 		if (success != 0)
 			return (ft_free(success, buf));

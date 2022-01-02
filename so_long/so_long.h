@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 11:44:49 by jiskim            #+#    #+#             */
-/*   Updated: 2021/12/31 00:20:51 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/01/03 00:43:56 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,13 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <fcntl.h>
-#include <string.h> //제외필수
+
+typedef struct s_map
+{
+	int	width;
+	int	height;
+	char **map;
+} t_map;
 
 typedef struct s_component
 {
@@ -58,7 +64,6 @@ typedef struct	s_data
 	int			col_num;
 } t_data;
 
-
 int	close_window(void *args);
 int	key_pressed(int keycode, void *args);
 void	init_data(t_data *data);
@@ -67,5 +72,7 @@ void	print_error();
 void	file_check(int argc, char *argv[]);
 void	read_map(char *map_path, t_data *data);
 int	get_next_line(int fd, char **line);
+void	*ft_calloc(size_t size);
+int	hash(char c);
 
 #endif

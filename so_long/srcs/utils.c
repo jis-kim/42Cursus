@@ -6,12 +6,27 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 21:33:41 by jiskim            #+#    #+#             */
-/*   Updated: 2021/12/30 23:28:22 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/01/03 01:00:35 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+int hash (char c)
+{
+	int ci = c;
+	return (ci % 3);
+}
+
+void	*ft_calloc(size_t size)
+{
+	void	*ptr;
+
+	ptr = malloc(size);
+	if (!ptr)
+		print_error();
+	return (ptr);
+}
 
 int	close_window(void *args)
 {

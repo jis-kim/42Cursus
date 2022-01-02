@@ -6,11 +6,11 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 14:56:13 by jiskim            #+#    #+#             */
-/*   Updated: 2021/12/30 22:53:46 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/01/01 18:43:11 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../../so_long.h"
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -45,10 +45,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char const	*s1_tmp;
 
 	if (!s1 || !s2)
-		return (NULL);
-	join = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!join)
-		return (NULL);
+		print_error();
+	join = ft_calloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	tmp = join;
 	s1_tmp = s1;
 	while (*s1)
@@ -65,9 +63,7 @@ char	*ft_strdup(const char *src)
 	char	*dest;
 	char	*temp;
 
-	dest = (char *)malloc(ft_strlen(src) + 1);
-	if (!dest)
-		return (0);
+	dest = (char *)ft_calloc(ft_strlen(src) + 1);
 	temp = dest;
 	while (*src)
 		*temp++ = *src++;
