@@ -6,38 +6,28 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 11:44:49 by jiskim            #+#    #+#             */
-/*   Updated: 2022/01/03 00:43:56 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/01/03 01:34:16 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
-#define SO_LONG_H
+# define SO_LONG_H
 
-#define KEY_ESC 53;
-#define IMG_SIZE 64;
+# define KEY_ESC 53;
+# define IMG_SIZE 64;
+# define CHAR_PATH "./img/chadul_front_64.xpm";
+# define BACK_PATH "./img/grass_64.xpm";
+# define OB_PATH "./img/hole.xpm";
+# define EXIT_PATH "./img/pipe.xpm";
+# define COL_PATH "./img/bell_64.xpm";
+# define SUCCESS_MSG_PATH "./img/success_message.xpm"
+# define FAIL_MSG_PATH "./img/fail_message.xpm"
 
-#define CHAR_PATH "/Users/jisukim/42Cursus/so_long/img/chadul_front_64.xpm";
-#define BACK_PATH "/Users/jisukim/42Cursus/so_long/img/grass_64.xpm";
-#define OB_PATH "/Users/jisukim/42Cursus/so_long/img/hole.xpm";
-#define EXIT_PATH "/Users/jisukim/42Cursus/so_long/img/pipe.xpm";
-#define COL_PATH "/Users/jisukim/42Cursus/so_long/img/bell_64.xpm";
-#define SUCCESS_MSG_PATH "/Users/jisukim/42Cursus/so_long/img/success_message.xpm"
-#define FAIL_MSG_PATH "/Users/jisukim/42Cursus/so_long/img/fail_message.xpm"
-
-
-#include "./mlx/mlx.h"
-#include "./srcs/get_next_line/get_next_line.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <fcntl.h>
-
-typedef struct s_map
-{
-	int	width;
-	int	height;
-	char **map;
-} t_map;
-
+# include "./mlx/mlx.h"
+# include "./srcs/get_next_line/get_next_line.h"
+# include <stdlib.h>
+# include <stdio.h>
+# include <fcntl.h>
 typedef struct s_component
 {
 	char	*path;
@@ -45,12 +35,12 @@ typedef struct s_component
 	int		x;
 	int		y;
 	int		recent_key;
-} t_component;
+}	t_component;
 
-typedef struct	s_data
+typedef struct s_data
 {
-	void	*mlx;
-	void	*mlx_win;
+	void		*mlx;
+	void		*mlx_win;
 	t_component	*player;
 	t_component	*background;
 	t_component	*obstacle;
@@ -62,17 +52,17 @@ typedef struct	s_data
 	int			map_height;
 	int			move_count;
 	int			col_num;
-} t_data;
+}	t_data;
 
-int	close_window(void *args);
-int	key_pressed(int keycode, void *args);
+int		close_window(void *args);
+int		key_pressed(int keycode, void *args);
 void	init_data(t_data *data);
 void	end_game(int success, t_data *data);
-void	print_error();
+void	print_error(void);
 void	file_check(int argc, char *argv[]);
 void	read_map(char *map_path, t_data *data);
-int	get_next_line(int fd, char **line);
+int		get_next_line(int fd, char **line);
 void	*ft_calloc(size_t size);
-int	hash(char c);
+int		hash(char c);
 
 #endif
