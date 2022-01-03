@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   file_check.c                                       :+:      :+:    :+:   */
+/*   check_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 23:28:04 by jiskim            #+#    #+#             */
-/*   Updated: 2022/01/03 01:36:16 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/01/04 01:06:13 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-void	print_error(void)
-{
-	printf("Error!\n");
-	exit(0);
-}
 
 void	file_check(int argc, char *argv[])
 {
@@ -25,17 +19,17 @@ void	file_check(int argc, char *argv[])
 	int		i;
 
 	if (argc != 2)
-		print_error();
+		print_error("Too many or less arguments.");
 	map_path = argv[1];
 	extension = ".ber";
 	i = 0;
 	while (*(map_path) != '\0')
 		map_path++;
-	map_path -= 5;
+	map_path -= 4;
 	while (extension[i] != '\0')
 	{
 		if (map_path[i] != extension[i])
-			print_error();
+			print_error("File must be end with '.ber'.");
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 11:44:49 by jiskim            #+#    #+#             */
-/*   Updated: 2022/01/03 01:34:16 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/01/04 02:40:52 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <sys/errno.h>
+# include <string.h>
 typedef struct s_component
 {
 	char	*path;
@@ -58,11 +60,13 @@ int		close_window(void *args);
 int		key_pressed(int keycode, void *args);
 void	init_data(t_data *data);
 void	end_game(int success, t_data *data);
-void	print_error(void);
+void	print_error(char *s);
 void	file_check(int argc, char *argv[]);
 void	read_map(char *map_path, t_data *data);
 int		get_next_line(int fd, char **line);
 void	*ft_calloc(size_t size);
 int		hash(char c);
+void	check_valid_format(t_data *data);
+void	show_map(t_data *data);
 
 #endif

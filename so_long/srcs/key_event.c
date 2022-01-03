@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 00:44:51 by jiskim            #+#    #+#             */
-/*   Updated: 2022/01/03 01:37:48 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/01/04 02:45:11 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,24 +22,28 @@ static int	check_player_movable(int x, int y, t_data *data)
 	return (loc_info != '1');
 }
 
-static void	check_collectable_enemy(int x, int y, int ch_x, int ch_y, t_data *data)
+static void	player_pass_exit(int x, int y, t_data *data)
 {
-	if (data->map[y + ch_y][x + ch_x] == 'C')
-	{
-		data->map[y + ch_y][x + ch_x] = '0';
-		mlx_put_image_to_window(data->mlx, data->mlx_win, \
-		data->background->img, (x + ch_x) * 64, (y + ch_y) * 64);
-		data->col_num--;
-	}
-	else if (data->map[y + ch_y][x + ch_x] == 'E')
-	{
-		if (data->col_num <= 0)
-			end_game(1, data);
-	}
-	else if (data->map[y][x] == 'E')
+	if (data->map[y][x] == 'E')
 	{
 		mlx_put_image_to_window(data->mlx, data->mlx_win, \
 		data->exit->img, x * 64, y * 64);
+	}
+}
+
+static void	check_collectable_exit(int x, int y, t_data *data)
+{
+	if (data->map[y][x] == 'C')
+	{
+		data->map[y][x] = '0';
+		mlx_put_image_to_window(data->mlx, data->mlx_win, \
+		data->background->img, (x) * 64, (y) * 64);
+		data->col_num--;
+	}
+	else if (data->map[y][x] == 'E')
+	{
+		if (data->col_num <= 0)
+			end_game(1, data);
 	}
 }
 
@@ -48,10 +52,8 @@ static void	move_player(int keycode, t_data *data)
 	int			change_x;
 	int			change_y;
 	t_component	*player;
-	t_component	*background;
 
 	player = data->player;
-	background = data->background;
 	change_x = 0;
 	change_y = 0;
 	if (keycode == 13)
@@ -64,11 +66,12 @@ static void	move_player(int keycode, t_data *data)
 		change_x = 1;
 	if (check_player_movable(player->x + change_x, player->y + change_y, data))
 	{
-		mlx_put_image_to_window(data->mlx, data->mlx_win, background->img, \
-		(player->x) * 64, (player->y) * 64);
-		check_collectable_enemy(player->x, player->y, change_x, change_y, data);
-		mlx_put_image_to_window(data->mlx, data->mlx_win, player->img\
-		, (player->x += change_x) * 64, (player->y += change_y) * 64);
+		mlx_put_image_to_window(data->mlx, data->mlx_win, \
+		data->background->img, (player->x) * 64, (player->y) * 64);
+		check_collectable_exit(player->x + change_x, player->y + change_y, data);
+		player_pass_exit(player->x, player->y, data);
+		mlx_put_image_to_window(data->mlx, data->mlx_win, player->img, \
+		(player->x += change_x) * 64, (player->y += change_y) * 64);
 		printf("%d\n", (++data->move_count));
 	}
 }

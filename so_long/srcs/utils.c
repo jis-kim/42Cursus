@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 21:33:41 by jiskim            #+#    #+#             */
-/*   Updated: 2022/01/03 01:31:34 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/01/04 02:45:58 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*ft_calloc(size_t size)
 
 	ptr = malloc(size);
 	if (!ptr)
-		print_error();
+		print_error("Allocating memory failed.");
 	return (ptr);
 }
 
@@ -60,7 +60,11 @@ void	end_game(int success, t_data *data)
 	width = 308;
 	height = 100;
 	x = (data->map_width * 64 - width) / 2;
+	if (x < 0)
+		x = 0;
 	y = data->map_height * 64 - height;
+	if (y < 0)
+		y = 0;
 	mlx_hook(data->mlx_win, 2, 0, nothing, data);
 	if (success)
 		img = mlx_xpm_file_to_image(data->mlx, SUCCESS_MSG_PATH, \

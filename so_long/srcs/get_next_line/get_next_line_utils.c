@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 14:56:13 by jiskim            #+#    #+#             */
-/*   Updated: 2022/01/01 18:43:11 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/01/04 00:41:37 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char const	*s1_tmp;
 
 	if (!s1 || !s2)
-		print_error();
+		print_error("Invalid String.");
 	join = ft_calloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	tmp = join;
 	s1_tmp = s1;

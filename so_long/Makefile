@@ -6,16 +6,20 @@
 #    By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/06 17:07:23 by jiskim            #+#    #+#              #
-#    Updated: 2021/12/31 00:25:38 by jiskim           ###   ########.fr        #
+#    Updated: 2022/01/04 02:37:16 by jiskim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-#CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 MLXDIR = ./mlx
+SRCSDIR = ./srcs/
+GNLDIR = $(SRCSDIR)/get_next_line/
 LIB = -L$(MLXDIR) -lmlx -framework OpenGl -framework Appkit
 
-SRCS = $(wildcard ./srcs/*.c)  $(wildcard ./srcs/get_next_line/*.c)
+SRCS = $(addprefix $(SRCSDIR), check_file.c handle_error.c initialize.c \
+key_event.c main.c parse_map.c utils.c check_map_format.c show_map.c) \
+$(addprefix $(GNLDIR), get_next_line_utils.c get_next_line.c)
 OBJS = $(SRCS:.c=.o)
 
 NAME = so_long

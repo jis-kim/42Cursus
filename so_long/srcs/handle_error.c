@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   handle_error.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 01:43:00 by jiskim            #+#    #+#             */
-/*   Updated: 2022/01/04 02:23:51 by jiskim           ###   ########.fr       */
+/*   Created: 2022/01/03 20:49:21 by jiskim            #+#    #+#             */
+/*   Updated: 2022/01/04 00:58:57 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int	main(int argc, char *argv[])
+static void	ft_putstr_fd(char *s, int fd)
 {
-	t_data	data;
+	if (!s)
+		return ;
+	write(fd, s, ft_strlen(s));
+}
 
-	file_check(argc, argv);
-	read_map(argv[1], &data);
-	init_data(&data);
-	show_map(&data);
-	mlx_hook(data.mlx_win, 17, 0, close_window, &data);
-	mlx_hook(data.mlx_win, 2, 0, key_pressed, &data);
-	mlx_loop(data.mlx);
+void	print_error(char *s)
+{
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(s, 2);
+	ft_putstr_fd("\n", 2);
+	exit(1);
 }

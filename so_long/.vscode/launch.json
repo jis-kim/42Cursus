@@ -10,7 +10,7 @@
             "type": "lldb",
             "request": "launch",
             "program": "${fileDirname}/../so_long",
-            "args": ["../map.ber"],
+            "args": ["/Users/jisukim/42Cursus/so_long/map.ber"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
