@@ -6,15 +6,20 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 11:44:49 by jiskim            #+#    #+#             */
-/*   Updated: 2022/01/04 02:40:52 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/01/04 14:22:01 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define KEY_ESC 53;
-# define IMG_SIZE 64;
+# define KEY_ESC 53
+# define KEY_W 13
+# define KEY_A 0
+# define KEY_S 1
+# define KEY_D 2
+
+# define IMG_SIZE 64
 # define CHAR_PATH "./img/chadul_front_64.xpm";
 # define BACK_PATH "./img/grass_64.xpm";
 # define OB_PATH "./img/hole.xpm";
