@@ -6,20 +6,11 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 13:13:27 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/07 01:53:29 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/07 01:54:40 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static void	free_split(char **split, size_t index)
-{
-	while (index--)
-	{
-		free(split[index]);
-	}
-	free(split);
-}
 
 static	size_t	split_len(char const *s, char c)
 {
@@ -60,10 +51,7 @@ static	const char	*create_ele(char **array, const char *s, char c, size_t i)
 	}
 	element = malloc(sizeof(char) * (size + 1));
 	if (!element)
-	{
-		free_split(array, i);
-		return (NULL);
-	}
+		exit(1);
 	array[i] = element;
 	while (*s != c && *s && index < size)
 		element[index++] = *s++;
@@ -81,17 +69,13 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	result = ft_calloc((split_len(s, c) + 1), sizeof(char *));
 	if (!result)
-		return (0);
+		exit(1);
 	index = 0;
 	flag = 1;
 	while (*s)
 	{
 		if (flag && *s != c)
-		{
 			s = create_ele(result, s, c, index++);
-			if (!s)
-				return (NULL);
-		}
 		flag = (*s == c);
 		s++;
 	}
