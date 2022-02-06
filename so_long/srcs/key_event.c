@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 00:44:51 by jiskim            #+#    #+#             */
-/*   Updated: 2022/01/04 02:45:11 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/01/04 14:25:41 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	player_pass_exit(int x, int y, t_data *data)
 	}
 }
 
-static void	check_collectable_exit(int x, int y, t_data *data)
+static void	check_finish(int x, int y, t_data *data)
 {
 	if (data->map[y][x] == 'C')
 	{
@@ -56,11 +56,11 @@ static void	move_player(int keycode, t_data *data)
 	player = data->player;
 	change_x = 0;
 	change_y = 0;
-	if (keycode == 13)
+	if (keycode == KEY_W)
 		change_y = -1;
-	else if (keycode == 0)
+	else if (keycode == KEY_A)
 		change_x = -1;
-	else if (keycode == 1)
+	else if (keycode == KEY_S)
 		change_y = 1;
 	else
 		change_x = 1;
@@ -68,7 +68,7 @@ static void	move_player(int keycode, t_data *data)
 	{
 		mlx_put_image_to_window(data->mlx, data->mlx_win, \
 		data->background->img, (player->x) * 64, (player->y) * 64);
-		check_collectable_exit(player->x + change_x, player->y + change_y, data);
+		check_finish(player->x + change_x, player->y + change_y, data);
 		player_pass_exit(player->x, player->y, data);
 		mlx_put_image_to_window(data->mlx, data->mlx_win, player->img, \
 		(player->x += change_x) * 64, (player->y += change_y) * 64);
@@ -78,12 +78,13 @@ static void	move_player(int keycode, t_data *data)
 
 int	key_pressed(int keycode, void *args)
 {
-	if (keycode == 53)
+	if (keycode == KEY_ESC)
 	{
 		close_window(args);
 		return (1);
 	}
-	if (keycode == 13 || keycode == 0 || keycode == 1 || keycode == 2)
+	if (keycode == KEY_W || keycode == KEY_A || keycode == KEY_S
+		|| keycode == KEY_D)
 		move_player(keycode, (t_data *)args);
 	return (1);
 }
