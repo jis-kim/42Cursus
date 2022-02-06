@@ -6,13 +6,13 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 14:29:07 by jiskim            #+#    #+#             */
-/*   Updated: 2021/05/16 17:37:23 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/06 16:52:27 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int		count_digits(int n)
+static	int	count_digits(int n)
 {
 	int	count;
 
@@ -29,8 +29,8 @@ static	int		count_digits(int n)
 
 static	void	insert_num(char *s, int n, int count)
 {
-	int index;
-	int mod;
+	int	index;
+	int	mod;
 
 	index = count;
 	while (index > 0)
@@ -43,7 +43,7 @@ static	void	insert_num(char *s, int n, int count)
 	}
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*result;
 	int		count;

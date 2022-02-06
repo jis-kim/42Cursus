@@ -6,13 +6,13 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/15 13:13:27 by jiskim            #+#    #+#             */
-/*   Updated: 2021/05/17 15:44:41 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/06 19:40:23 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void			free_split(char **split, size_t index)
+static void	free_split(char **split, size_t index)
 {
 	while (index--)
 	{
@@ -21,7 +21,7 @@ static void			free_split(char **split, size_t index)
 	free(split);
 }
 
-static	size_t		split_len(char const *s, char c)
+static	size_t	split_len(char const *s, char c)
 {
 	size_t	count;
 	size_t	flag;
@@ -71,7 +71,7 @@ static	const char	*create_ele(char **array, const char *s, char c, size_t i)
 	return (--s);
 }
 
-char				**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**result;
 	size_t	index;
@@ -79,7 +79,8 @@ char				**ft_split(char const *s, char c)
 
 	if (!s)
 		return (NULL);
-	if (!(result = ft_calloc((split_len(s, c) + 1), sizeof(char *))))
+	result = ft_calloc((split_len(s, c) + 1), sizeof(char *));
+	if (!result)
 		return (0);
 	index = 0;
 	flag = 1;
@@ -90,8 +91,11 @@ char				**ft_split(char const *s, char c)
 		else
 		{
 			if (flag)
-				if (!(s = create_ele(result, s, c, index++)))
+			{
+				s = create_ele(result, s, c, index++);
+				if (!s)
 					return (NULL);
+			}
 			flag = 0;
 		}
 		s++;

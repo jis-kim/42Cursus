@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/16 17:24:12 by jiskim            #+#    #+#             */
-/*   Updated: 2021/05/16 17:54:54 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/06 16:53:01 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static	void	write_remainder(int n, int fd)
 	}
 }
 
-void			ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
 	if (n < 0)
 		write(fd, "-", 1);

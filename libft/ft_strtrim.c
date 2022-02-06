@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 17:31:17 by jiskim            #+#    #+#             */
-/*   Updated: 2021/05/12 21:35:34 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/06 19:13:21 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static	int	get_start_index(char const *s1, char const *s2)
 {
-	int i;
+	int	i;
 	int	size;
 
 	size = (int)ft_strlen(s1);
@@ -30,7 +30,7 @@ static	int	get_start_index(char const *s1, char const *s2)
 
 static	int	get_end_index(char const *s1, char const *s2)
 {
-	int i;
+	int	i;
 	int	size;
 
 	size = (int)ft_strlen(s1);
@@ -44,7 +44,7 @@ static	int	get_end_index(char const *s1, char const *s2)
 	return (i);
 }
 
-char		*ft_strtrim(char const *s1, char const *s2)
+char	*ft_strtrim(char const *s1, char const *s2)
 {
 	char	*result;
 	int		start;
