@@ -6,7 +6,7 @@
 #    By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/09 17:52:40 by jiskim            #+#    #+#              #
-#    Updated: 2022/02/07 02:57:03 by jiskim           ###   ########.fr        #
+#    Updated: 2022/02/07 18:14:36 by jiskim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CFLAGS	=	-Wall -Wextra -Werror
 BONDIR	=	./bonus/
 SRCSDIR	=	./srcs/
 LIBDIR	=	$(SRCSDIR)libft/
-SRCS	=	$(addprefix $(SRCSDIR), parse.c print_error.c push_swap.c)
+SRCS	=	$(addprefix $(SRCSDIR), parse.c print_error.c push_swap.c stack_operation.c)
 OBJS	=	$(SRCS:.c=.o)
 SRCS_B	=	$(addprefix $(BONDIR), $(wildcard *.c))
 OBJS_B	=	$(SRCS_B:.c=.o)

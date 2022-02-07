@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 19:51:02 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/07 02:01:53 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/07 12:27:29 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 int	ft_atoi(const char *str)
 {
 	int					sign;
+	int					i;
 	unsigned long long	ai;
 
 	sign = 1;
@@ -29,13 +30,14 @@ int	ft_atoi(const char *str)
 	}
 	else if (*str == '+')
 		str++;
-	while (*str)
+	i = 0;
+	while (*str && ++i < 11)
 	{
 		if (*str < '0' || *str > '9')
 			print_error();
 		ai = (10 * ai) + (*str++ - '0');
 	}
-	if (ai > 9223372036854775807)
+	if (*str || (sign == 1 && ai > 2147483647) || (sign == -1 && ai > 2147483648))
 		print_error();
 	return (ai * sign);
 }
