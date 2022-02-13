@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:26:34 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/14 01:52:50 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/14 02:56:34 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,14 @@ int	main(int argc, char *argv[])
 	b = ft_calloc(1, sizeof(t_stack));
 	b->name = 'b';
 	push_swap(a, b);
+
+	//t_node *a_node;
+	//a_node = a->head;
+	//while (a_node)
+	//{
+	//	ft_putnbr_fd(a_node->num, 1);
+	//	ft_putstr_fd("->", 1);
+	//	a_node = a_node->next;
+	//}
+	//ft_putstr_fd("\n", 1);
 }

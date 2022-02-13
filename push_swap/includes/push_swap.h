@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:20:30 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/13 20:33:00 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/14 01:55:28 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_stack
 	char	name;
 }t_stack;
 
-enum e_direction {
+enum e_dir {
 	asc = 0,
 	desc = 1
 };
@@ -48,9 +48,9 @@ void	reverse_rotate(t_stack *stack, char name);
 void	rr(t_stack *a, t_stack *b);
 void	rrr(t_stack *a, t_stack *b);
 
-void	sort_to_a(t_stack *a, t_stack *b, int size, int direction);
-void	sort_to_b(t_stack *a, t_stack *b, int size, int direction);
+void	sort_to_a(t_stack *a, t_stack *b, int size, int dir);
+void	sort_to_b(t_stack *a, t_stack *b, int size, int dir);
 
-void	merge(t_stack *dst, t_stack *other, int size, int direction);
+void	merge(t_stack *dst, t_stack *other, int size, int dir);
 
 #endif

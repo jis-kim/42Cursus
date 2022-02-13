@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 21:44:59 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/14 01:55:28 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/14 02:54:36 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,12 @@ void	merge(t_stack *dst, t_stack *other, int size, int dir)
 	int	selected_chunk;
 
 	chunk_size[0] = size / 3;
-	chunk_size[1] = size / 3;
-	chunk_size[2] = size / 3 + size % 3;
+	chunk_size[2] = size / 3;
+	if (size % 3 == 2)
+		chunk_size[0]++;
+	if (size % 3 == 1)
+		chunk_size[2]++;
+	chunk_size[1] = chunk_size[0];
 	while (chunk_size[0] + chunk_size[1] + chunk_size[2] > 0)
 	{
 		if (dir == asc)
@@ -103,11 +107,8 @@ void	merge(t_stack *dst, t_stack *other, int size, int dir)
 		if (selected_chunk == 0)
 			reverse_rotate(dst, dst->name);
 		else if (selected_chunk == 1)
-		{
 			reverse_rotate(other, other->name);
-			push(dst, other, dst->name);
-		}
-		else
+		if (selected_chunk > 0)
 			push(dst, other, dst->name);
 		chunk_size[selected_chunk]--;
 	}
