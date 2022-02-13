@@ -6,38 +6,26 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:26:34 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/09 21:25:44 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/14 01:16:22 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
+
+void	push_swap(t_stack *a, t_stack *b)
+{
+	sort_to_a(a, b, a->size, asc);
+}
 
 int	main(int argc, char *argv[])
 {
 	t_stack	*a;
-	t_node	*a_node;
+	t_stack *b;
 
 	if (argc < 2)
 		return (0);
 	a = parse(argc, argv);
-
-	a_node = a->head;
-	// list 조회
-
-	while (a_node != NULL)
-	{
-		printf("%d->", a_node->num);
-		a_node = a_node->next;
-	}
-
-	printf("\n");
-
-	a_node = a->head;
-	// list 조회
-	while (a_node != NULL)
-	{
-		printf("%d->", a_node->num);
-		a_node = a_node->next;
-	}
+	b = ft_calloc(1, sizeof(t_stack));
+	b->name = 'b';
+	push_swap(a, b);
 }

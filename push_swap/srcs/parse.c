@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:26:03 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/07 12:27:41 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/13 18:54:43 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ t_stack	*parse(int argc, char **argv)
 	a = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	insert_stack(a, argc, argv);
 	check_duplication(a);
+	a->name = 'a';
 	return (a);
 }

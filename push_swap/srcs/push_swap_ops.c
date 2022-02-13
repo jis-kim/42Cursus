@@ -6,13 +6,13 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 12:01:40 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/11 01:42:43 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/13 21:58:29 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	swap(t_stack *stack)
+void	swap(t_stack *stack, char name)
 {
 	t_node	*tmp;
 
@@ -24,27 +24,35 @@ void	swap(t_stack *stack)
 	stack->head = tmp->next;
 	tmp->next = tmp->next->next;
 	stack->head->next = tmp;
+	if (name == 'a')
+		print_command("sa");
+	else if (name == 'b')
+		print_command("sb");
 }
 
-void	push(t_stack *from, t_stack *to)
+void	push(t_stack *dst, t_stack *other, char name)
 {
 	t_node	*tmp;
 
-	if (from->size == 0)
+	if (other->size == 0)
 		return ;
-	if (from->head == from->tail)
-	{
-		from->head->next = to->head;
-		to->head = from->head;
-		from->head = NULL;
-	}
-	else
-	{
-		tmp = from->head->next;
-		from->head->next = to->head;
-		to->head = from->head;
-		from->head = tmp;
-	}
-	from->size--;
-	to->size++;
+	tmp = other->head->next;
+	other->head->next = dst->head;
+	dst->head = other->head;
+	other->head = tmp;
+	if (dst->tail == NULL)
+		dst->tail = dst->head;
+	other->size--;
+	dst->size++;
+	if (name == 'a')
+		print_command("pa");
+	else if (name == 'b')
+		print_command("pb");
+}
+
+void	ss(t_stack *a, t_stack *b)
+{
+	swap(a, ' ');
+	swap(b, ' ');
+	print_command("ss");
 }

@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   node_compare.c                                     :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 21:32:33 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/13 16:34:24 by jiskim           ###   ########.fr       */
+/*   Created: 2022/02/06 20:21:07 by jiskim            #+#    #+#             */
+/*   Updated: 2022/02/14 01:18:07 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	get_max_chunk(t_stack *dst, t_stack *other)
+void	print_error(void)
 {
-	int	fst;
-	int	snd;
-	int	thd;
+	ft_putstr_fd("Error\n", 2);
+	exit(1);
+}
 
-	if (dst->size)
-	fst = dst->tail->num;
-	snd = other->head->num;
-	thd = other->tail->num;
-
-	if (fst > snd)
-		if (fst > thd)
-			return (1);
-	else
-		if (snd > thd)
-			return (2);
-	return (3);
+void	print_command(char *str)
+{
+	if	(*str)
+	{
+		ft_putstr_fd(str, 1);
+		ft_putstr_fd("\n", 1);
+	}
 }

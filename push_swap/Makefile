@@ -6,7 +6,7 @@
 #    By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/09 17:52:40 by jiskim            #+#    #+#              #
-#    Updated: 2022/02/07 18:14:36 by jiskim           ###   ########.fr        #
+#    Updated: 2022/02/13 20:37:09 by jiskim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,16 +15,16 @@ CFLAGS	=	-Wall -Wextra -Werror
 BONDIR	=	./bonus/
 SRCSDIR	=	./srcs/
 LIBDIR	=	$(SRCSDIR)libft/
-SRCS	=	$(addprefix $(SRCSDIR), parse.c print_error.c push_swap.c stack_operation.c)
+SRCS	=	$(addprefix $(SRCSDIR), merge.c parse.c print.c\
+			push_swap_ops.c push_swap.c rotate_ops.c sort.c)
 OBJS	=	$(SRCS:.c=.o)
 SRCS_B	=	$(addprefix $(BONDIR), $(wildcard *.c))
 OBJS_B	=	$(SRCS_B:.c=.o)
 NAME	=	push_swap
 LIB		=	$(LIBDIR)libft.a
 
-D_TEST	=	a.out.dSYM
-DFLAG	=	-g3 -fsanitize=address
-
+D_TEST	=	a.out
+DFLAG	=	-g3
 #ifdef SRCS_B_RELINK
 #	OBJS_FILES = $(OBJS_B)
 #else
@@ -46,8 +46,8 @@ clean :
 	rm -f $(NAME) $(OBJS) $(OBJS_B)
 	make -C $(LIBDIR) fclean
 
-$(D_TEST) : $(OBJS) $(LIB)
-	$(CC) $(CFLAGS) $(DFLAG) $(OBJS) $(LIB)
+$(D_TEST) : $(LIB)
+	$(CC) $(CFLAGS) $(DFLAG) $(SRCS) $(LIB)
 
 debug : $(D_TEST)
 

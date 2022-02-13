@@ -6,41 +6,51 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 21:58:42 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/10 18:45:38 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/14 01:11:19 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	rotate(t_stack *stack)
+void	rotate(t_stack *stack, char name)
 {
 	if (stack->size <= 1)
 		return ;
 	stack->tail->next = stack->head;
+	stack->tail = stack->head;
 	stack->head = stack->head->next;
-	stack->tail = stack->tail->next;
 	stack->tail->next = NULL;
+	if (name == 'a')
+		print_command("ra");
+	else if (name == 'b')
+		print_command("rb");
 }
 
-void	reverse_rotate(t_stack *stack)
+void	reverse_rotate(t_stack *stack, char name)
 {
 	if (stack->size <= 1)
 		return ;
 	stack->tail->next = stack->head;
 	stack->head = stack->tail;
-	while (stack->tail->next != stack->head)
+	while(stack->tail->next != stack->head)
 		stack->tail = stack->tail->next;
 	stack->tail->next = NULL;
+	if (name == 'a')
+		print_command("rra");
+	else if (name == 'b')
+		print_command("rrb");
 }
 
 void	rr(t_stack *a, t_stack *b)
 {
-	rotate(a);
-	rotate(b);
+	rotate(a, ' ');
+	rotate(b, ' ');
+	print_command("rr");
 }
 
 void	rrr(t_stack *a, t_stack *b)
 {
-	reverse_rotate(a);
-	reverse_rotate(b);
+	reverse_rotate(a, ' ');
+	reverse_rotate(b, ' ');
+	print_command("rrr");
 }
