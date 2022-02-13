@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 21:44:59 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/13 22:33:43 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/14 01:55:28 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	max(int a, int b, int c)
 int	min(int a, int b, int c)
 {
 	if (a < b && a < c)
-			return (0);
+		return (0);
 	if (b < c)
-			return (1);
+		return (1);
 	return (2);
 }
 
@@ -35,24 +35,24 @@ int	get_max_chunk(t_stack *dst, t_stack *other, int chunk_size[])
 	int	result;
 
 	result = 0;
-	if (chunk_size[0] > 0) //0 있음
+	if (chunk_size[0] > 0)
 	{
-		if (chunk_size[1] > 0 && chunk_size[2] > 0) // 셋 다 있음
+		if (chunk_size[1] > 0 && chunk_size[2] > 0)
 			result = max(dst->tail->num, other->tail->num, other->head->num);
-		else if (chunk_size[1] > 0 && (dst->tail->num < other->tail->num)) //0과 1이 있음 근데 1이 큼
+		else if (chunk_size[1] > 0 && (dst->tail->num < other->tail->num))
 			result = 1;
-		else if (chunk_size[2] > 0 && (dst->tail->num < other->head->num)) //0과 2가 있음.. 근데 2가 큼
+		else if (chunk_size[2] > 0 && (dst->tail->num < other->head->num))
 			result = 2;
 	}
-	else //0 없음 -> 0일 일 없어^^
+	else
 	{
 		if (chunk_size[1] > 0)
 		{
 			result = 1;
-			if (chunk_size[2] > 0 && (other->tail->num < other->head->num)) //1도 2도 있는데 2가 더 큼
+			if (chunk_size[2] > 0 && (other->tail->num < other->head->num))
 				result = 2;
 		}
-		else // 0도 없고 1도 없음;
+		else
 			result = 2;
 	}
 	return (result);
@@ -63,55 +63,40 @@ int	get_min_chunk(t_stack *dst, t_stack *other, int chunk_size[])
 	int	result;
 
 	result = 0;
-	if (chunk_size[0] > 0) //0 있음
+	if (chunk_size[0] > 0)
 	{
-		if (chunk_size[1] > 0 && chunk_size[2] > 0) // 셋 다 있음
+		if (chunk_size[1] > 0 && chunk_size[2] > 0)
 			result = min(dst->tail->num, other->tail->num, other->head->num);
-		else if (chunk_size[1] > 0 && (dst->tail->num > other->tail->num)) //0과 1이 있음 근데 1이 작음
+		else if (chunk_size[1] > 0 && (dst->tail->num > other->tail->num))
 			result = 1;
-		else if (chunk_size[2] > 0 && (dst->tail->num > other->head->num)) //0과 2가 있음.. 근데 2가 작음
+		else if (chunk_size[2] > 0 && (dst->tail->num > other->head->num))
 			result = 2;
 	}
-	else //0 없음 -> 0일 일 없어^^
+	else
 	{
 		if (chunk_size[1] > 0)
 		{
 			result = 1;
-			if (chunk_size[2] > 0 && (other->tail->num > other->head->num)) //1도 2도 있는데 2가 더 작음
+			if (chunk_size[2] > 0 && (other->tail->num > other->head->num))
 				result = 2;
 		}
-		else // 0도 없고 1도 없음;
+		else
 			result = 2;
 	}
 	return (result);
 }
 
-/**
- * @brief
- * a라면 b바닥 (rb pa)
- * a바닥 (ra)
- * b천장 (pa) 순
- *
- * b라면 b바닥 (rb)
- * a바닥 (ra pb)
- * a천장 (pb) 순
- *
- * @param dst
- * @param other
- * @param size
- * @param direction
- */
-void	merge(t_stack *dst, t_stack *other, int size, int direction)
+void	merge(t_stack *dst, t_stack *other, int size, int dir)
 {
 	int	chunk_size[3];
 	int	selected_chunk;
 
 	chunk_size[0] = size / 3;
-	chunk_size[1]  = size / 3;
-	chunk_size[2]  = size / 3  + size % 3;
+	chunk_size[1] = size / 3;
+	chunk_size[2] = size / 3 + size % 3;
 	while (chunk_size[0] + chunk_size[1] + chunk_size[2] > 0)
 	{
-		if (direction == asc)
+		if (dir == asc)
 			selected_chunk = get_max_chunk(dst, other, chunk_size);
 		else
 			selected_chunk = get_min_chunk(dst, other, chunk_size);

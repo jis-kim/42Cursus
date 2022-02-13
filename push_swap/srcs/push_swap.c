@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:26:34 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/14 01:16:22 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/14 01:52:50 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	push_swap(t_stack *a, t_stack *b)
 int	main(int argc, char *argv[])
 {
 	t_stack	*a;
-	t_stack *b;
+	t_stack	*b;
 
 	if (argc < 2)
 		return (0);

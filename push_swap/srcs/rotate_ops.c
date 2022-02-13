@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 21:58:42 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/14 01:11:19 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/14 01:53:36 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	reverse_rotate(t_stack *stack, char name)
 		return ;
 	stack->tail->next = stack->head;
 	stack->head = stack->tail;
-	while(stack->tail->next != stack->head)
+	while (stack->tail->next != stack->head)
 		stack->tail = stack->tail->next;
 	stack->tail->next = NULL;
 	if (name == 'a')
