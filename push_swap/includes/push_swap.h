@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:20:30 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/07 18:11:18 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/13 16:39:40 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 
 typedef struct s_node
 {
-	int		num;
-	int		index;
-	struct	s_node	*next;
+	int				num;
+	int				index;
+	struct s_node	*next;
 }t_node;
 
 typedef struct s_stack
@@ -30,7 +30,12 @@ typedef struct s_stack
 	int		size;
 }t_stack;
 
-void	print_error();
+enum e_direction {
+	asc = 0,
+	desc = 1
+};
+
+void	print_error(void);
 t_stack	*parse(int argc, char** argv);
 
 void	swap(t_stack *stack);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_operation.c                                  :+:      :+:    :+:   */
+/*   push_swap_ops.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 12:01:40 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/07 18:25:04 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/11 01:42:43 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,25 +47,4 @@ void	push(t_stack *from, t_stack *to)
 	}
 	from->size--;
 	to->size++;
-}
-
-void	rotate(t_stack *stack)
-{
-	if (stack->size <= 1)
-		return ;
-	stack->tail->next = stack->head;
-	stack->head = stack->head->next;
-	stack->tail = stack->tail->next;
-	stack->tail->next = NULL;
-}
-
-void	reverse_rotate(t_stack *stack)
-{
-	if (stack->size <= 1)
-		return ;
-	stack->tail->next = stack->head;
-	stack->head = stack->tail;
-	while (stack->tail->next != stack->head)
-		stack->tail = stack->tail->next;
-	stack->tail->next = NULL;
 }

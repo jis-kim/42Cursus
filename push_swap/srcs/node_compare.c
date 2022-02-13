@@ -1,43 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   node_compare.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/06 16:26:34 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/09 21:25:44 by jiskim           ###   ########.fr       */
+/*   Created: 2022/02/11 21:32:33 by jiskim            #+#    #+#             */
+/*   Updated: 2022/02/13 16:34:24 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-#include <stdio.h>
 
-int	main(int argc, char *argv[])
+int	get_max_chunk(t_stack *dst, t_stack *other)
 {
-	t_stack	*a;
-	t_node	*a_node;
+	int	fst;
+	int	snd;
+	int	thd;
 
-	if (argc < 2)
-		return (0);
-	a = parse(argc, argv);
+	if (dst->size)
+	fst = dst->tail->num;
+	snd = other->head->num;
+	thd = other->tail->num;
 
-	a_node = a->head;
-	// list 조회
-
-	while (a_node != NULL)
-	{
-		printf("%d->", a_node->num);
-		a_node = a_node->next;
-	}
-
-	printf("\n");
-
-	a_node = a->head;
-	// list 조회
-	while (a_node != NULL)
-	{
-		printf("%d->", a_node->num);
-		a_node = a_node->next;
-	}
+	if (fst > snd)
+		if (fst > thd)
+			return (1);
+	else
+		if (snd > thd)
+			return (2);
+	return (3);
 }
