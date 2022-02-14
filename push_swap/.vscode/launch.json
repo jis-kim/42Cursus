@@ -9,7 +9,7 @@
       "type": "lldb",
       "request": "launch",
       "program": "${workspaceFolder}/a.out",
-      "args": ["10  43241  111 1112 12 212 222"],
+      "args": ["963 -860 259 687 542 -616 283 -464 271 407 765 -723 -432 761 64 -23 734 191 -169 -564 97 -552 563 474 490 -654 364 672"],
       "cwd": "${workspaceFolder}/srcs",
       "MIMode": "lldb",
       "preLaunchTask": "use makefile"

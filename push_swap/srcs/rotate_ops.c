@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 21:58:42 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/14 01:53:36 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/14 19:41:10 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ void	rotate(t_stack *stack, char name)
 {
 	if (stack->size <= 1)
 		return ;
+	if (stack->size == 2)
+	{
+		swap(stack, name);
+		return ;
+	}
 	stack->tail->next = stack->head;
 	stack->tail = stack->head;
 	stack->head = stack->head->next;
@@ -30,10 +35,18 @@ void	reverse_rotate(t_stack *stack, char name)
 {
 	if (stack->size <= 1)
 		return ;
-	stack->tail->next = stack->head;
-	stack->head = stack->tail;
-	while (stack->tail->next != stack->head)
-		stack->tail = stack->tail->next;
+	if (stack->size == 2)
+	{
+		swap(stack, name);
+		return ;
+	}
+	else
+	{
+		stack->tail->next = stack->head;
+		stack->head = stack->tail;
+		while (stack->tail->next != stack->head)
+			stack->tail = stack->tail->next;
+	}
 	stack->tail->next = NULL;
 	if (name == 'a')
 		print_command("rra");

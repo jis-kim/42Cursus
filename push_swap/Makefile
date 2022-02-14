@@ -6,7 +6,7 @@
 #    By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/09 17:52:40 by jiskim            #+#    #+#              #
-#    Updated: 2022/02/13 20:37:09 by jiskim           ###   ########.fr        #
+#    Updated: 2022/02/14 16:11:54 by jiskim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,9 @@ $(D_TEST) : $(LIB)
 	$(CC) $(CFLAGS) $(DFLAG) $(SRCS) $(LIB)
 
 debug : $(D_TEST)
+
+address : $(LIB)
+	$(CC) $(CFLAGS) $(DFLAG) -fsanitize=address $(SRCS) $(LIB)
 
 dclean :
 	rm -rf $(D_TEST)

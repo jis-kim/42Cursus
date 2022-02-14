@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 21:26:18 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/14 02:31:56 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/14 21:26:19 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,103 @@ void	sort_under_two(t_stack *dst, t_stack *other, int size, int dir)
 	}
 }
 
+void	sort_three_asc(t_stack *a, t_stack *b)
+{
+	int	fst;
+	int	snd;
+	int	thd;
+	int	max_value;
+
+	fst = a->head->num;
+	snd = a->head->next->num;
+	thd = a->head->next->next->num;
+	max_value = max(fst, snd, thd);
+	if (max_value == 2)
+	{
+		if (fst > snd)
+			swap(a, 'a');
+		return ;
+	}
+	if (max_value == 0)
+		swap(a, 'a');
+	push(b, a, 'b');
+	swap(a, 'a');
+	push(a, b, 'a');
+	if (a->head->num > a->head->next->num)
+		swap(a, 'a');
+}
+
+void	sort_three_desc(t_stack *a, t_stack *b)
+{
+	int	fst;
+	int	snd;
+	int	thd;
+	int	min_value;
+
+	fst = a->head->num;
+	snd = a->head->next->num;
+	thd = a->head->next->next->num;
+	min_value = min(fst, snd, thd);
+	if (min_value == 2)
+	{
+		if (fst < snd)
+			swap(a, 'a');
+		return ;
+	}
+	if (min_value == 0)
+		swap(a, 'a');
+	push(b, a, 'b');
+	swap(a, 'a');
+	push(a, b, 'a');
+	if (a->head->num < a->head->next->num)
+		swap(a, 'a');
+}
+
+void	sort_small_case(t_stack *a, t_stack *b, int size, int dir)
+{
+	int	chunk_size[3];
+
+	ft_bzero(chunk_size, 3 * sizeof(int));
+	if (size == 3 && dir == asc)
+		sort_three_asc(a, b);
+	else if (size == 3 && dir == desc)
+		sort_three_desc(a, b);
+	else if (size <= 2)
+		sort_under_two(a, b, size, dir);
+	else if (size == 4)
+	{
+		chunk_size[0] = 2;
+		chunk_size[2] = 2;
+		sort_under_two(b, a, 2, !dir);
+		sort_under_two(a, b, 2, dir);
+		rotate(a, 'a');
+		rotate(a, 'a');
+		small_merge(a, b, chunk_size, dir);
+	}
+	else
+	{
+		chunk_size[0] = 3;
+		chunk_size[2] = 2;
+		sort_under_two(b, a, 2, !dir);
+		if (dir == asc)
+			sort_three_asc(a, b);
+		else
+			sort_three_desc(a, b);
+		rotate(a, 'a');
+		rotate(a, 'a');
+		rotate(a, 'a');
+		small_merge(a, b, chunk_size, dir);
+	}
+}
+
 void	sort_to_a(t_stack *a, t_stack *b, int size, int dir)
 {
 	int	bottom_size;
 	int	top_size;
 
-	if (size <= 2)
+	if (size <= 5)
 	{
-		sort_under_two(a, b, size, dir);
+		sort_small_case(a, b, size, dir);
 		return ;
 	}
 	bottom_size = size / 3;

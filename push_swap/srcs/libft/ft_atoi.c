@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 19:51:02 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/07 12:27:29 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/14 16:20:33 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_atoi(const char *str)
 			print_error();
 		ai = (10 * ai) + (*str++ - '0');
 	}
-	if (*str || (sign == 1 && ai > 2147483647) || (sign == -1 && ai > 2147483648))
+	if (*str || (sign == 1 && ai > INT_MAX) || (sign == -1 && ai > 2147483648))
 		print_error();
 	return (ai * sign);
 }
