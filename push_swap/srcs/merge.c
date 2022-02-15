@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 21:44:59 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/14 21:24:41 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/15 13:35:45 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,23 +86,27 @@ int	get_min_chunk(t_stack *dst, t_stack *other, int chunk_size[])
 	return (result);
 }
 
-void	small_merge(t_stack *dst, t_stack *other, int size[], int dir)
+void	small_merge(t_stack *dst, t_stack *other, int size, int dir)
 {
 	int	selected_chunk;
+	int	chunk_size[3];
 
-	while (size[0] + size[1] + size[2] > 0)
+	chunk_size[0] = size / 2;
+	chunk_size[1] = 0;
+	chunk_size[2] = size / 2 + size % 2;
+	while (chunk_size[0] + chunk_size[1] + chunk_size[2] > 0)
 	{
 		if (dir == asc)
-			selected_chunk = get_max_chunk(dst, other, size);
+			selected_chunk = get_max_chunk(dst, other, chunk_size);
 		else
-			selected_chunk = get_min_chunk(dst, other, size);
+			selected_chunk = get_min_chunk(dst, other, chunk_size);
 		if (selected_chunk == 0)
 			reverse_rotate(dst, dst->name);
 		else if (selected_chunk == 1)
 			reverse_rotate(other, other->name);
 		if (selected_chunk > 0)
 			push(dst, other, dst->name);
-		size[selected_chunk]--;
+		chunk_size[selected_chunk]--;
 	}
 }
 
