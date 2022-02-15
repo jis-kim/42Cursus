@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 20:21:07 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/15 20:21:03 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/15 21:05:06 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	print_command(t_cmd *cmd_h)
 			{
 				ft_putstr_fd("rrr\n", 1);
 				node = node->next->next;
-				continue;
+				continue ;
 			}
 		}
 		if (node->str)

@@ -6,29 +6,35 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:26:03 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/13 18:54:43 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/15 21:01:33 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	check_duplication(t_stack *a)
+void	check_duplication_sorted(t_stack *a)
 {
-	t_node	*toCompare;
+	t_node	*to_compare;
 	t_node	*node;
+	int		sorted;
 
 	node = a->head;
+	sorted = 1;
 	while (node->next != NULL)
 	{
-		toCompare = node->next;
-		while (toCompare != NULL)
+		to_compare = node->next;
+		while (to_compare != NULL)
 		{
-			if (node->num == toCompare->num)
+			if (node->num == to_compare->num)
 				print_error();
-			toCompare = toCompare->next;
+			if (node->num > to_compare->num)
+				sorted = 0;
+			to_compare = to_compare->next;
 		}
 		node = node->next;
 	}
+	if (sorted)
+		exit(0);
 }
 
 void	set_node(t_stack *a, char *splitted)
@@ -73,7 +79,7 @@ t_stack	*parse(int argc, char **argv)
 
 	a = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	insert_stack(a, argc, argv);
-	check_duplication(a);
+	check_duplication_sorted(a);
 	a->name = 'a';
 	return (a);
 }

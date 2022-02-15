@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:20:30 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/15 20:49:21 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/15 21:08:13 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,9 @@ typedef struct s_node
 	struct s_node	*next;
 }t_node;
 
-
 typedef struct s_cmd
 {
-	char	*str;
+	char			*str;
 	struct s_cmd	*next;
 }t_cmd;
 

@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:26:34 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/15 20:54:27 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/15 21:05:15 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	sort_three_prev(t_stack *a)
 	int	max_val;
 
 	if (a->head->num < a->head->next->num && a->head->next->num < a->tail->num)
-		return;
+		return ;
 	max_val = max(a->head->num, a->head->next->num, a->tail->num);
 	if (0 == max_val)
 	{
@@ -25,7 +25,7 @@ void	sort_three_prev(t_stack *a)
 		if (a->head->num < a->head->next->num)
 			return ;
 	}
-	else if (1== max_val)
+	else if (1 == max_val)
 	{
 		reverse_rotate(a, 'a');
 		if (a->head->num < a->head->next->num)
@@ -75,49 +75,4 @@ int	main(int argc, char *argv[])
 	b->cmd_h = cmd_h;
 	push_swap(a, b);
 	print_command(a->cmd_h);
-	// t_node *a_node;
-	// a_node = a->head;
-
-	// ft_putendl_fd("before", 1);
-	// ft_putendl_fd("a", 1);
-	// while (a_node)
-	// {
-	// 	ft_putnbr_fd(a_node->num, 1);
-	// 	ft_putstr_fd("->", 1);
-	// 	a_node = a_node->next;
-	// }
-	// ft_putstr_fd("\n", 1);
-
-	// t_node *b_node;
-	// b_node = b->head;
-	// ft_putendl_fd("b", 1);
-	// while (b_node)
-	// {
-	// 	ft_putnbr_fd(b_node->num, 1);
-	// 	ft_putstr_fd("->", 1);
-	// 	b_node = b_node->next;
-	// }
-	// ft_putstr_fd("\n", 1);
-
-	// ft_putendl_fd("after", 1);
-	// reverse_rotate(a,  'a');
-	// ft_putendl_fd("a", 1);
-	// a_node = a->head;
-	// while (a_node)
-	// {
-	// 	ft_putnbr_fd(a_node->num, 1);
-	// 	ft_putstr_fd("->", 1);
-	// 	a_node = a_node->next;
-	// }
-	// ft_putstr_fd("\n", 1);
-
-	// b_node = b->head;
-	// ft_putendl_fd("b", 1);
-	// while (b_node)
-	// {
-	// 	ft_putnbr_fd(b_node->num, 1);
-	// 	ft_putstr_fd("->", 1);
-	// 	b_node = b_node->next;
-	// }
-	// ft_putstr_fd("\n", 1);
 }

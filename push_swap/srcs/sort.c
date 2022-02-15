@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 21:26:18 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/15 13:43:26 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/15 21:07:35 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,21 +42,19 @@ void	sort_under_two(t_stack *dst, t_stack *other, int size, int dir)
 
 void	sort_three(t_stack *a, t_stack *b, int dir)
 {
-	int	fst;
-	int	snd;
-	int	thd;
+	int	nums[3];
 	int	min_or_max;
 
-	fst = a->head->num;
-	snd = a->head->next->num;
-	thd = a->head->next->next->num;
+	nums[0] = a->head->num;
+	nums[1] = a->head->next->num;
+	nums[2] = a->head->next->next->num;
 	if (dir == asc)
-		min_or_max = max(fst, snd, thd);
+		min_or_max = max(nums[0], nums[1], nums[2]);
 	else
-		min_or_max = min(fst, snd, thd);
+		min_or_max = min(nums[0], nums[1], nums[2]);
 	if (min_or_max == 2)
 	{
-		if ((!dir && fst > snd) || (dir && fst < snd))
+		if ((!dir && nums[0] > nums[1]) || (dir && nums[0] < nums[1]))
 			swap(a, 'a');
 		return ;
 	}
@@ -65,7 +63,8 @@ void	sort_three(t_stack *a, t_stack *b, int dir)
 	push(b, a, 'b');
 	swap(a, 'a');
 	push(a, b, 'a');
-	if ((!dir && a->head->num > a->head->next->num) || (dir && a->head->num < a->head->next->num))
+	if ((!dir && a->head->num > a->head->next->num)
+		|| (dir && a->head->num < a->head->next->num))
 		swap(a, 'a');
 }
 
@@ -86,7 +85,7 @@ void	sort_small_case(t_stack *a, t_stack *b, int size, int dir)
 		else
 		{
 			rotate_num = 3;
-			sort_three(a ,b, dir);
+			sort_three(a, b, dir);
 		}
 		while (rotate_num-- > 0)
 			rotate(a, 'a');
