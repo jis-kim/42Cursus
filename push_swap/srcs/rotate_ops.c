@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 21:58:42 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/14 19:41:10 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/15 19:54:26 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	rotate(t_stack *stack, char name)
 	stack->head = stack->head->next;
 	stack->tail->next = NULL;
 	if (name == 'a')
-		print_command("ra");
+		ft_cmd_add(&stack->cmd_h, "ra");
 	else if (name == 'b')
-		print_command("rb");
+		ft_cmd_add(&stack->cmd_h, "rb");
 }
 
 void	reverse_rotate(t_stack *stack, char name)
@@ -49,21 +49,21 @@ void	reverse_rotate(t_stack *stack, char name)
 	}
 	stack->tail->next = NULL;
 	if (name == 'a')
-		print_command("rra");
+		ft_cmd_add(&stack->cmd_h, "rra");
 	else if (name == 'b')
-		print_command("rrb");
+		ft_cmd_add(&stack->cmd_h, "rrb");
 }
 
 void	rr(t_stack *a, t_stack *b)
 {
 	rotate(a, ' ');
 	rotate(b, ' ');
-	print_command("rr");
+	ft_cmd_add(&a->cmd_h, "rr");
 }
 
 void	rrr(t_stack *a, t_stack *b)
 {
 	reverse_rotate(a, ' ');
 	reverse_rotate(b, ' ');
-	print_command("rrr");
+	ft_cmd_add(&a->cmd_h, "rrr");
 }

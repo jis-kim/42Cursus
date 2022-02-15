@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:20:30 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/15 13:37:21 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/15 19:42:48 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,20 @@ typedef struct s_node
 	struct s_node	*next;
 }t_node;
 
+
+typedef struct s_cmd
+{
+	char	*str;
+	struct s_cmd	*next;
+}t_cmd;
+
 typedef struct s_stack
 {
 	t_node	*head;
 	t_node	*tail;
 	int		size;
 	char	name;
+	t_cmd	*cmd_h;
 }t_stack;
 
 enum e_dir {
@@ -37,7 +45,7 @@ enum e_dir {
 };
 
 void	print_error(void);
-void	print_command(char *str);
+void	print_command(t_cmd *cmd_h);
 
 t_stack	*parse(int argc, char **argv);
 
@@ -57,4 +65,6 @@ void	merge(t_stack *dst, t_stack *other, int size, int dir);
 int		max(int a, int b, int c);
 int		min(int a, int b, int c);
 void	small_merge(t_stack *dst, t_stack *other, int size, int dir);
+void	ft_cmd_add(t_cmd **head, char *str);
+
 #endif

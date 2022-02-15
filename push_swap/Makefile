@@ -6,7 +6,7 @@
 #    By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/09 17:52:40 by jiskim            #+#    #+#              #
-#    Updated: 2022/02/14 16:11:54 by jiskim           ###   ########.fr        #
+#    Updated: 2022/02/15 20:07:43 by jiskim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ BONDIR	=	./bonus/
 SRCSDIR	=	./srcs/
 LIBDIR	=	$(SRCSDIR)libft/
 SRCS	=	$(addprefix $(SRCSDIR), merge.c parse.c print.c\
-			push_swap_ops.c push_swap.c rotate_ops.c sort.c)
+			push_swap_ops.c push_swap.c rotate_ops.c sort.c cmd_ops.c)
 OBJS	=	$(SRCS:.c=.o)
 SRCS_B	=	$(addprefix $(BONDIR), $(wildcard *.c))
 OBJS_B	=	$(SRCS_B:.c=.o)

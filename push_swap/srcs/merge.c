@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 21:44:59 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/15 13:35:45 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/15 20:20:16 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,9 @@ void	small_merge(t_stack *dst, t_stack *other, int size, int dir)
 	int	selected_chunk;
 	int	chunk_size[3];
 
-	chunk_size[0] = size / 2;
+	chunk_size[0] = size / 2 + size % 2;
 	chunk_size[1] = 0;
-	chunk_size[2] = size / 2 + size % 2;
+	chunk_size[2] = size / 2;
 	while (chunk_size[0] + chunk_size[1] + chunk_size[2] > 0)
 	{
 		if (dir == asc)

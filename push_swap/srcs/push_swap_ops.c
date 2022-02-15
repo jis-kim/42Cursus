@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 12:01:40 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/14 19:56:02 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/15 19:54:09 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	swap(t_stack *stack, char name)
 		stack->tail = tmp;
 	stack->tail->next = NULL;
 	if (name == 'a')
-		print_command("sa");
+		ft_cmd_add(&stack->cmd_h, "sa");
 	else if (name == 'b')
-		print_command("sb");
+		ft_cmd_add(&stack->cmd_h, "sb");
 }
 
 void	push(t_stack *dst, t_stack *other, char name)
@@ -49,14 +49,14 @@ void	push(t_stack *dst, t_stack *other, char name)
 	other->size--;
 	dst->size++;
 	if (name == 'a')
-		print_command("pa");
+		ft_cmd_add(&dst->cmd_h, "pa");
 	else if (name == 'b')
-		print_command("pb");
+		ft_cmd_add(&dst->cmd_h, "pb");
 }
 
 void	ss(t_stack *a, t_stack *b)
 {
 	swap(a, ' ');
 	swap(b, ' ');
-	print_command("ss");
+	ft_cmd_add(&a->cmd_h, "ss");
 }

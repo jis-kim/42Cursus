@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 20:21:07 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/14 01:52:34 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/15 20:21:03 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,27 @@ void	print_error(void)
 	exit(1);
 }
 
-void	print_command(char *str)
+void	print_command(t_cmd *cmd_h)
 {
-	if (*str)
+	t_cmd	*node;
+
+	node = cmd_h;
+	while (node)
 	{
-		ft_putstr_fd(str, 1);
-		ft_putstr_fd("\n", 1);
+		if ((node->str) && !ft_strncmp(node->str, "rra", 3))
+		{
+			if (node->next && !ft_strncmp(node->next->str, "rrb", 3))
+			{
+				ft_putstr_fd("rrr\n", 1);
+				node = node->next->next;
+				continue;
+			}
+		}
+		if (node->str)
+		{
+			ft_putstr_fd(node->str, 1);
+			ft_putstr_fd("\n", 1);
+		}
+		node = node->next;
 	}
 }

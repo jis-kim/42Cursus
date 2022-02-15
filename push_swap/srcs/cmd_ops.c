@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   cmd_ops.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/07 21:57:27 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/15 19:37:20 by jiskim           ###   ########.fr       */
+/*   Created: 2022/02/15 19:26:56 by jiskim            #+#    #+#             */
+/*   Updated: 2022/02/15 19:47:38 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/push_swap.h"
 
-char	*ft_strdup(const char *src)
+void	ft_cmd_add(t_cmd **head, char *str)
 {
-	char	*dest;
-	char	*temp;
+	t_cmd	*tmp;
+	t_cmd	*new;
 
-	dest = (char *)ft_calloc(ft_strlen(src) + 1, 1);
-	temp = dest;
-	while (*src)
-		*temp++ = *src++;
-	return (dest);
+	tmp = *head;
+	new = ft_calloc(1, sizeof(t_cmd));
+	new->str = ft_strdup(str);
+	if (!*head)
+	{
+		*head = new;
+		return ;
+	}
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new;
+}
+
+void	ft_free_cmd(t_cmd	*cmd)
+{
+	if (!cmd)
+		return ;
+	free(cmd->str);
+	free(cmd);
 }
