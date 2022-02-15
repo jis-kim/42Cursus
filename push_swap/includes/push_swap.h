@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:20:30 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/15 19:42:48 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/15 20:49:21 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,6 @@ int		max(int a, int b, int c);
 int		min(int a, int b, int c);
 void	small_merge(t_stack *dst, t_stack *other, int size, int dir);
 void	ft_cmd_add(t_cmd **head, char *str);
+void	sort_under_two(t_stack *dst, t_stack *other, int size, int dir);
 
 #endif

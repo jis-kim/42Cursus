@@ -6,15 +6,57 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:26:34 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/15 20:20:38 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/15 20:54:27 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+void	sort_three_prev(t_stack *a)
+{
+	int	max_val;
+
+	if (a->head->num < a->head->next->num && a->head->next->num < a->tail->num)
+		return;
+	max_val = max(a->head->num, a->head->next->num, a->tail->num);
+	if (0 == max_val)
+	{
+		rotate(a, 'a');
+		if (a->head->num < a->head->next->num)
+			return ;
+	}
+	else if (1== max_val)
+	{
+		reverse_rotate(a, 'a');
+		if (a->head->num < a->head->next->num)
+			return ;
+	}
+	swap(a, 'a');
+}
+
+void	sort_lt_six(t_stack *a, t_stack *b, int size)
+{
+	if (size <= 2)
+		sort_under_two(a, b, size, asc);
+	else if (size == 3)
+		sort_three_prev(a);
+	else
+	{
+		sort_under_two(b, a, 2, desc);
+		if (size == 4)
+			sort_under_two(a, b, 2, asc);
+		else
+			sort_three_prev(a);
+		small_merge(a, b, size, asc);
+	}
+}
+
 void	push_swap(t_stack *a, t_stack *b)
 {
-	sort_to_a(a, b, a->size, asc);
+	if (a->size <= 5)
+		sort_lt_six(a, b, a->size);
+	else
+		sort_to_a(a, b, a->size, asc);
 }
 
 int	main(int argc, char *argv[])
