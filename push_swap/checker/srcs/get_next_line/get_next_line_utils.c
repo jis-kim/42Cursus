@@ -1,39 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd_ops.c                                          :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/15 19:26:56 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/15 19:47:38 by jiskim           ###   ########.fr       */
+/*   Created: 2021/05/20 14:56:13 by jiskim            #+#    #+#             */
+/*   Updated: 2022/02/16 16:00:47 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-
-void	ft_cmd_add(t_cmd **head, char *str)
+char	*ft_strjoin_free(char const *s1, char const *s2)
 {
-	t_cmd	*tmp;
-	t_cmd	*new;
+	char		*join;
+	char		*tmp;
+	char const	*s1_tmp;
 
-	tmp = *head;
-	new = ft_calloc(1, sizeof(t_cmd));
-	new->str = ft_strdup(str);
-	if (!*head)
-	{
-		*head = new;
-		return ;
-	}
-	while (tmp->next)
-		tmp = tmp->next;
-	tmp->next = new;
-}
-
-void	ft_free_cmd(t_cmd	*cmd)
-{
-	if (!cmd)
-		return ;
-	free(cmd->str);
-	free(cmd);
+	if (!s1 || !s2)
+		print_error("Invalid String.");
+	join = ft_calloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	tmp = join;
+	s1_tmp = s1;
+	while (*s1)
+		*tmp++ = *s1++;
+	while (*s2)
+		*tmp++ = *s2++;
+	*tmp = 0;
+	free((void *)s1_tmp);
+	return (join);
 }

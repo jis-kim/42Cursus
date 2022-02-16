@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/06 16:20:30 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/15 21:08:13 by jiskim           ###   ########.fr       */
+/*   Created: 2022/02/16 15:55:03 by jiskim            #+#    #+#             */
+/*   Updated: 2022/02/16 15:57:12 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define PUSH_SWAP_H
 # define INT_MAX 2147483647
 
-# include "../srcs/libft/libft.h"
+# include "../srcs/get_next_line/get_next_line.h"
 
 typedef struct s_node
 {

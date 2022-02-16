@@ -6,11 +6,11 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 20:21:07 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/15 21:05:06 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/16 16:06:25 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	print_error(void)
 {

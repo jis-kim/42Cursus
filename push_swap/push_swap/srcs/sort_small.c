@@ -1,16 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   sort_small.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/09 21:26:18 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/15 21:07:35 by jiskim           ###   ########.fr       */
+/*   Created: 2022/02/16 16:13:19 by jiskim            #+#    #+#             */
+/*   Updated: 2022/02/16 16:23:33 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
+
+
+void	sort_three(t_stack *a)
+{
+	int	max_val;
+
+	if (a->head->num < a->head->next->num && a->head->next->num < a->tail->num)
+		return ;
+	max_val = max(a->head->num, a->head->next->num, a->tail->num);
+	if (0 == max_val)
+	{
+		rotate(a, 'a');
+		if (a->head->num < a->head->next->num)
+			return ;
+	}
+	else if (1 == max_val)
+	{
+		reverse_rotate(a, 'a');
+		if (a->head->num < a->head->next->num)
+			return ;
+	}
+	swap(a, 'a');
+}
+
+void	sort_small(t_stack *a, t_stack *b, int size)
+{
+	if (size <= 2)
+		sort_under_two(a, b, size, asc);
+	else if (size == 3)
+		sort_three(a);
+	else
+	{
+		sort_under_two(b, a, 2, desc);
+		if (size == 4)
+			sort_under_two(a, b, 2, asc);
+		else
+			sort_three(a);
+		small_merge(a, b, size, asc);
+	}
+}
 
 void	sort_under_two(t_stack *dst, t_stack *other, int size, int dir)
 {
@@ -40,7 +80,7 @@ void	sort_under_two(t_stack *dst, t_stack *other, int size, int dir)
 	}
 }
 
-void	sort_three(t_stack *a, t_stack *b, int dir)
+void	sort_three_chunk(t_stack *a, t_stack *b, int dir)
 {
 	int	nums[3];
 	int	min_or_max;
@@ -68,14 +108,14 @@ void	sort_three(t_stack *a, t_stack *b, int dir)
 		swap(a, 'a');
 }
 
-void	sort_small_case(t_stack *a, t_stack *b, int size, int dir)
+void	sort_small_chunk(t_stack *a, t_stack *b, int size, int dir)
 {
 	int	rotate_num;
 
 	if (size <= 2)
 		sort_under_two(a, b, size, dir);
 	else if (size == 3)
-		sort_three(a, b, dir);
+		sort_three_chunk(a, b, dir);
 	else
 	{
 		rotate_num = 2;
@@ -85,58 +125,10 @@ void	sort_small_case(t_stack *a, t_stack *b, int size, int dir)
 		else
 		{
 			rotate_num = 3;
-			sort_three(a, b, dir);
+			sort_three_chunk(a, b, dir);
 		}
 		while (rotate_num-- > 0)
 			rotate(a, 'a');
 		small_merge(a, b, size, dir);
 	}
-}
-
-void	sort_to_a(t_stack *a, t_stack *b, int size, int dir)
-{
-	int	bottom_size;
-	int	top_size;
-
-	if (size <= 5)
-	{
-		sort_small_case(a, b, size, dir);
-		return ;
-	}
-	bottom_size = size / 3;
-	top_size = size / 3;
-	if (size % 3 == 1)
-		top_size++;
-	else if (size % 3 == 2)
-		bottom_size++;
-	sort_to_b(a, b, bottom_size, dir);
-	sort_to_a(a, b, bottom_size, dir);
-	while (bottom_size-- > 0)
-		rr(a, b);
-	sort_to_b(a, b, top_size, !dir);
-	merge(a, b, size, dir);
-}
-
-void	sort_to_b(t_stack *a, t_stack *b, int size, int dir)
-{
-	int	bottom_size;
-	int	top_size;
-
-	if (size <= 2)
-	{
-		sort_under_two(b, a, size, dir);
-		return ;
-	}
-	bottom_size = size / 3;
-	top_size = size / 3;
-	if (size % 3 == 1)
-		top_size++;
-	else if (size % 3 == 2)
-		bottom_size++;
-	sort_to_b(a, b, bottom_size, dir);
-	sort_to_a(a, b, bottom_size, dir);
-	while (bottom_size-- > 0)
-		rr(a, b);
-	sort_to_a(a, b, top_size, !dir);
-	merge(b, a, size, dir);
 }

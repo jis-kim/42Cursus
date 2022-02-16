@@ -6,11 +6,11 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 21:44:59 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/15 21:02:27 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/16 16:07:12 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 int	get_max_chunk(t_stack *dst, t_stack *other, int chunk_size[])
 {

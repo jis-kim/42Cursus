@@ -6,11 +6,11 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/15 21:02:40 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/15 21:04:00 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/16 16:07:12 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 int	max(int a, int b, int c)
 {

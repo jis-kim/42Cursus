@@ -6,11 +6,40 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:26:03 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/15 21:01:33 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/16 16:10:28 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
+
+int	ft_ps_atoi(const char *str)
+{
+	int					sign;
+	int					i;
+	unsigned long long	ai;
+
+	sign = 1;
+	ai = 0;
+	while (*str == 32)
+		str++;
+	if (*str == '-')
+	{
+		sign = -1;
+		str++;
+	}
+	else if (*str == '+')
+		str++;
+	i = 0;
+	while (*str && ++i < 11)
+	{
+		if (*str < '0' || *str > '9')
+			print_error();
+		ai = (10 * ai) + (*str++ - '0');
+	}
+	if (*str || (sign == 1 && ai > INT_MAX) || (sign == -1 && ai > 2147483648))
+		print_error();
+	return (ai * sign);
+}
 
 void	check_duplication_sorted(t_stack *a)
 {
@@ -42,7 +71,7 @@ void	set_node(t_stack *a, char *splitted)
 	t_node	*node;
 
 	node = ft_calloc(1, sizeof(t_node));
-	node->num = ft_atoi(splitted);
+	node->num = ft_ps_atoi(splitted);
 	if (!a->head)
 		a->head = node;
 	else

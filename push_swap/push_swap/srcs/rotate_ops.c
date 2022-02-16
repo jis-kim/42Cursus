@@ -6,11 +6,11 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 21:58:42 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/15 19:54:26 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/16 16:06:40 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	rotate(t_stack *stack, char name)
 {

@@ -6,11 +6,11 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 12:01:40 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/15 19:54:09 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/16 16:06:32 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "push_swap.h"
 
 void	swap(t_stack *stack, char name)
 {

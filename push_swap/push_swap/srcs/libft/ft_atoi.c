@@ -6,22 +6,20 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 19:51:02 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/15 21:17:53 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/16 16:12:33 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../../includes/push_swap.h"
 
 int	ft_atoi(const char *str)
 {
 	int					sign;
-	int					i;
 	unsigned long long	ai;
 
 	sign = 1;
 	ai = 0;
-	while (*str == 32)
+	while ((*str >= 9 && *str <= 13) || *str == 32)
 		str++;
 	if (*str == '-')
 	{
@@ -30,17 +28,14 @@ int	ft_atoi(const char *str)
 	}
 	else if (*str == '+')
 		str++;
-	i = 0;
-	while (*str && ++i < 11)
-	{
-		if (*str < '0' || *str > '9')
-			print_error();
+	while (*str >= '0' && *str <= '9')
 		ai = (10 * ai) + (*str++ - '0');
-	}
-	if (*str || (sign == 1 && ai > INT_MAX) || (sign == -1 && ai > 2147483648))
+	if (ai > 9223372036854775807)
 	{
-		ft_putstr_fd("Error\n", 2);
-		exit(1);
+		if (sign == -1)
+			return (0);
+		else
+			return (-1);
 	}
 	return (ai * sign);
 }
