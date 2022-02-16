@@ -6,12 +6,13 @@
 #    By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/09 17:52:40 by jiskim            #+#    #+#              #
-#    Updated: 2022/02/16 16:47:08 by jiskim           ###   ########.fr        #
+#    Updated: 2022/02/16 17:50:22 by jiskim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror
+#CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	= 	-g3 -fsanitize=address
 BONDIR	=	./bonus/
 SRCSDIR	=	./srcs/
 INCDIR	=	./includes/
@@ -23,9 +24,11 @@ SRCS	=	$(addprefix $(PSDIR), cmd_ops.c get_min_max.c merge.c parse.c \
 			print.c push_swap.c push_swap_ops.c rotate_ops.c \
 			sort.c sort_small.c)
 OBJS	=	$(SRCS:.c=.o)
-SRCS_B	=	$(addprefix $(BONDIR), $(wildcard *.c))
+SRCS_B	=	$(addprefix $(CKDIR), checker.c) $(addprefix $(PSDIR), cmd_ops.c \
+			parse.c print.c push_swap_ops.c rotate_ops.c)
 OBJS_B	=	$(SRCS_B:.c=.o)
 NAME	=	push_swap
+BONUS	=	checker
 LIB		=	$(LIBDIR)libft.a
 
 D_TEST	=	a.out
@@ -41,6 +44,11 @@ $(NAME) : $(OBJS) $(LIB)
 
 $(LIB) :
 	make -C $(LIBDIR)
+
+bonus : $(BONUS)
+
+$(BONUS) :  $(OBJS_B) $(LIB)
+	$(CC) $(CFLAGS) $(OBJS_B) $(LIB) -o $@
 
 clean :
 	rm -f $(NAME) $(OBJS) $(OBJS_B)
@@ -62,4 +70,4 @@ fclean : clean dclean
 
 re : fclean all
 
-.PHONY: all clean fclean re dclean
+.PHONY: all clean fclean re dclean bonus

@@ -142,13 +142,13 @@ fi
 if ! [[ -f "$1/push_swap" ]]; then
 	printf "${RED}error: could not find push_swap in $1 \n${NOCOLOR}" >&2
 	exit -1;
-elif ! [[ -f "$1/checker_Mac" ]]; then
+elif ! [[ -f "$1/checker" ]]; then
 	printf "${RED}error: could not find checker in $1 \n${NOCOLOR}" >&2
 	exit -1;
 elif ! [[ -x "$1/push_swap" ]]; then
 	printf "${RED}error: cannot execute push_swap in $1 \n${NOCOLOR}" >&2
 	exit -1;
-elif ! [[ -x "$1/checker_Mac" ]]; then
+elif ! [[ -x "$1/checker" ]]; then
 	printf "${RED}error: cannot execute checker in $1 \n${NOCOLOR}" >&2
 	exit -1;
 else
@@ -173,7 +173,7 @@ for ((stack_size = $startRange; stack_size <= $endRange; stack_size++)); do
 	fi
 	printf "${DARKGRAY} TEST $testNB: ${NOCOLOR}"
 	"./$1/push_swap" $ARG > push_swap_result.log; exitCode=$?
-	RESULT_CHECKER=`"./$1/checker_Mac" $ARG < push_swap_result.log`
+	RESULT_CHECKER=`"./$1/checker" $ARG < push_swap_result.log`
 	if [[ "$RESULT_CHECKER" = "KO" ]]; then
 		printf "${RED}$RESULT_CHECKER ${NOCOLOR}"
 	else

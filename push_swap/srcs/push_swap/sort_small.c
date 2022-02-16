@@ -6,12 +6,11 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 16:13:19 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/16 16:23:33 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/16 18:21:28 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	sort_three(t_stack *a)
 {

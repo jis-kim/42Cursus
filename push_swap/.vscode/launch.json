@@ -8,11 +8,11 @@
       "name": "Debug",
       "type": "lldb",
       "request": "launch",
-      "program": "${workspaceFolder}/a.out",
-      "args": ["465 835 732 17 119"],
+      "program": "${workspaceFolder}/push_swap",
+      "args": [" 1 2 3 "],
       "cwd": "${workspaceFolder}/srcs",
       "MIMode": "lldb",
-      "preLaunchTask": "use makefile"
+      // "preLaunchTask": "use makefile"
     }
   ]
 }

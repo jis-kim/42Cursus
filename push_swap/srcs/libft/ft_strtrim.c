@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 17:31:17 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/06 19:13:21 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/16 18:05:59 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char	*ft_strtrim(char const *s1, char const *s2)
 	end = get_end_index(s1, s2);
 	if (start >= end)
 		return (ft_strdup(""));
-	result = malloc(sizeof(char) * (end - start + 2));
+	result = ft_calloc(sizeof(char), (end - start + 2));
 	if (!result)
 		return (NULL);
 	i = 0;
@@ -67,6 +67,5 @@ char	*ft_strtrim(char const *s1, char const *s2)
 		start++;
 		i++;
 	}
-	result[i] = 0;
 	return (result);
 }

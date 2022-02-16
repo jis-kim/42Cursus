@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 15:55:03 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/16 16:27:20 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/16 18:19:39 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define CHECKER_H
 # define INT_MAX 2147483647
 
-# include "../srcs/get_next_line/get_next_line.h"
+# include "../srcs/libft/includes/libft.h"
 
 typedef struct s_node
 {
@@ -38,12 +38,15 @@ typedef struct s_stack
 	t_cmd	*cmd_h;
 }t_stack;
 
-enum e_dir {
-	asc = 0,
-	desc = 1
-};
-
 void	print_error(void);
-t_stack	*parse(int argc, char **argv);
+void	insert_stack(t_stack *a, int argc, char **argv);
+
+void	swap(t_stack *stack, char name);
+void	ss(t_stack *a, t_stack *b);
+void	push(t_stack *dst, t_stack *other, char name);
+void	rotate(t_stack *stack, char name);
+void	reverse_rotate(t_stack *stack, char name);
+void	rr(t_stack *a, t_stack *b);
+void	rrr(t_stack *a, t_stack *b);
 
 #endif

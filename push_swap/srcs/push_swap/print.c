@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 20:21:07 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/16 16:06:25 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/16 17:20:16 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	print_command(t_cmd *cmd_h)
 	node = cmd_h;
 	while (node)
 	{
-		if ((node->str) && !ft_strncmp(node->str, "rra", 3))
+		if ((node->str) && !ft_strncmp(node->str, "rra", 4))
 		{
-			if (node->next && !ft_strncmp(node->next->str, "rrb", 3))
+			if (node->next && !ft_strncmp(node->next->str, "rrb", 4))
 			{
 				ft_putstr_fd("rrr\n", 1);
 				node = node->next->next;

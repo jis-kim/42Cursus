@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:26:34 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/16 16:23:53 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/16 17:30:10 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,5 @@ int	main(int argc, char *argv[])
 	b->cmd_h = cmd_h;
 	push_swap(a, b);
 	print_command(a->cmd_h);
+	return (0);
 }
