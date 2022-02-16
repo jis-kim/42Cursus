@@ -6,13 +6,12 @@
 #    By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/17 11:34:13 by jiskim            #+#    #+#              #
-#    Updated: 2022/02/16 17:56:34 by jiskim           ###   ########.fr        #
+#    Updated: 2022/02/16 21:01:18 by jiskim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		= gcc
-#CFLAGS	= -Wall -Wextra -Werror
-CFLAGS	= -g3 -fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror
 SRCS	=	ft_isprint.c ft_itoa.c ft_memccpy.c ft_memchr.c ft_memcmp.c \
   			ft_memcpy.c ft_memmove.c ft_memset.c ft_putchar_fd.c ft_strlen.c \
   			ft_putnbr_fd.c ft_putstr_fd.c ft_split.c ft_strchr.c ft_strdup.c \

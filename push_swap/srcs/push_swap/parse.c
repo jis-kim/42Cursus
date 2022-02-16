@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:26:03 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/16 18:17:21 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/16 21:00:18 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,6 @@ void	insert_stack(t_stack *a, int argc, char **argv)
 	int		i;
 	char	**splitted;
 	char	**initial;
-	char	*tmp;
 
 	i = 0;
 	while (argc > ++i)

@@ -6,13 +6,12 @@
 #    By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/09 17:52:40 by jiskim            #+#    #+#              #
-#    Updated: 2022/02/16 17:50:22 by jiskim           ###   ########.fr        #
+#    Updated: 2022/02/16 21:00:02 by jiskim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		=	gcc
-#CFLAGS	=	-Wall -Wextra -Werror
-CFLAGS	= 	-g3 -fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror
 BONDIR	=	./bonus/
 SRCSDIR	=	./srcs/
 INCDIR	=	./includes/
