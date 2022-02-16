@@ -6,13 +6,13 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 15:55:03 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/16 15:57:12 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/16 16:27:20 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
+#ifndef CHECKER_H
 
-# define PUSH_SWAP_H
+# define CHECKER_H
 # define INT_MAX 2147483647
 
 # include "../srcs/get_next_line/get_next_line.h"
@@ -44,27 +44,6 @@ enum e_dir {
 };
 
 void	print_error(void);
-void	print_command(t_cmd *cmd_h);
-
 t_stack	*parse(int argc, char **argv);
-
-void	swap(t_stack *stack, char name);
-void	ss(t_stack *a, t_stack *b);
-void	push(t_stack *dst, t_stack *other, char name);
-void	rotate(t_stack *stack, char name);
-void	reverse_rotate(t_stack *stack, char name);
-void	rr(t_stack *a, t_stack *b);
-void	rrr(t_stack *a, t_stack *b);
-
-void	sort_to_a(t_stack *a, t_stack *b, int size, int dir);
-void	sort_to_b(t_stack *a, t_stack *b, int size, int dir);
-
-void	merge(t_stack *dst, t_stack *other, int size, int dir);
-
-int		max(int a, int b, int c);
-int		min(int a, int b, int c);
-void	small_merge(t_stack *dst, t_stack *other, int size, int dir);
-void	ft_cmd_add(t_cmd **head, char *str);
-void	sort_under_two(t_stack *dst, t_stack *other, int size, int dir);
 
 #endif

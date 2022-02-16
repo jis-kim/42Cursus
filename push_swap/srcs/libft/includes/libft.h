@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 18:43:21 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/07 00:52:55 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/16 16:50:52 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,17 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }				t_list;
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 12
+# endif
+
+# ifndef OPEN_MAX
+#  define OPEN_MAX 10240
+# endif
+
+char			*ft_strjoin_free(char const *s1, char const *s2);
+int				get_next_line(int fd, char **line);
 
 void			*ft_memset(void *b, int c, size_t len);
 void			ft_bzero(void *s, size_t n);

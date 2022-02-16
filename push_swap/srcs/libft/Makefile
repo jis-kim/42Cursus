@@ -6,7 +6,7 @@
 #    By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/17 11:34:13 by jiskim            #+#    #+#              #
-#    Updated: 2021/05/20 14:22:30 by jiskim           ###   ########.fr        #
+#    Updated: 2022/02/16 16:55:12 by jiskim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,14 @@ SRCS	=	ft_isprint.c ft_itoa.c ft_memccpy.c ft_memchr.c ft_memcmp.c \
   			ft_strjoin.c ft_strlcat.c ft_strlcpy.c ft_strmapi.c \
   			ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c \
   			ft_tolower.c ft_toupper.c ft_bzero.c ft_isalpha.c ft_isdigit.c \
-			ft_isalnum.c ft_isascii.c ft_atoi.c ft_calloc.c ft_putendl_fd.c
+			ft_isalnum.c ft_isascii.c ft_atoi.c ft_calloc.c ft_putendl_fd.c \
+			$(addprefix $(GNLDIR), get_next_line.c get_next_line_utils.c)
 SRCS_B	=	ft_lstadd_back.c ft_lstadd_front.c  ft_lstdelone.c ft_lstmap.c \
 			ft_lstlast.c ft_lstnew.c ft_lstsize.c ft_lstclear.c ft_lstiter.c
 OBJS	= $(SRCS:.c=.o)
 OBJS_B	= $(SRCS_B:.c=.o)
+INCDIR	= ./includes/
+GNLDIR	= ./get_next_line/
 NAME	= libft.a
 
 ifdef SRCS_B_RELINK
@@ -34,7 +37,7 @@ endif
 all : $(NAME)
 
 %.o : %.c
-	$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
 
 $(NAME) : $(OBJS_FILES)
 	ar rcs $@ $(OBJS_FILES)

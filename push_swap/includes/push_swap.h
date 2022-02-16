@@ -6,7 +6,7 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/06 16:20:30 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/16 16:23:40 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/16 16:47:59 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define PUSH_SWAP_H
 # define INT_MAX 2147483647
 
-# include "../srcs/libft/libft.h"
+# include "../srcs/libft/includes/libft.h"
 
 typedef struct s_node
 {

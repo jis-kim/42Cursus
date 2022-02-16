@@ -6,11 +6,11 @@
 /*   By: jiskim <jiskim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/20 14:56:00 by jiskim            #+#    #+#             */
-/*   Updated: 2022/02/16 16:01:55 by jiskim           ###   ########.fr       */
+/*   Updated: 2022/02/16 16:51:53 by jiskim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "libft.h"
 
 static int	buf_split(char **buf_remain, char **line, int check_read)
 {
@@ -53,7 +53,7 @@ int	get_next_line(int fd, char **line)
 	if (!line || fd < 0 || fd > OPEN_MAX || BUFFER_SIZE <= 0
 		|| read(fd, *line, 0) == -1)
 		return (-1);
-	buf = ft_calloc(sizeof(char) * (BUFFER_SIZE + 1));
+	buf = ft_calloc(sizeof(char) * (BUFFER_SIZE + 1), 1);
 	success = buf_split(&buf_remain, line, 1);
 	if (success != 0)
 		return (ft_free(success, buf));
