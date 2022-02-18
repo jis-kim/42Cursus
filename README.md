@@ -9,3 +9,5 @@
 ||**[Born2beroot](https://evening-cushion-319.notion.site/Born2beRoot-adf4fb7a50044494a72eaaa0b073fc2d)**|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/jiskim/Born2beroot)](https://github.com/JaeSeoKim/badge42)|2021-07-05|
 ||**[ft_printf](https://github.com/jis-kim/42Cursus/tree/master/ft_printf)**|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/jiskim/ft_printf)](https://github.com/JaeSeoKim/badge42)|2021-09-26|
 |2|**[so_long](https://github.com/jis-kim/42Cursus/tree/master/so_long)**|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/jiskim/so_long)](https://github.com/JaeSeoKim/badge42)|2022-01-04|
+||**[push_swap](https://github.com/jis-kim/42Cursus/tree/master/push_swap)**|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/jiskim/push_swap)](https://github.com/JaeSeoKim/badge42)|2022-02-18|
+||**[minitalk](https://github.com/jis-kim/42Cursus/tree/master/minitalk)**|[![jaeskim's 42Project Score](https://badge42.herokuapp.com/api/project/jiskim/minitalk)](https://github.com/JaeSeoKim/badge42)|💬|
