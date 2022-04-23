@@ -1,3 +1,6 @@
 [submodule "push_swap"]
 	path = push_swap
 	url = git@github.com:jis-kim/push_swap.git
+[submodule "minitalk"]
+	path = minitalk
+	url = git@github.com:jis-kim/minitalk.git
