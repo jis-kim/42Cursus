@@ -4,3 +4,6 @@
 [submodule "minitalk"]
 	path = minitalk
 	url = git@github.com:jis-kim/minitalk.git
+[submodule "minishell"]
+	path = minishell
+	url = git@github.com:strawberryShell/minishell.git
