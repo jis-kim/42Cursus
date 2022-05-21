@@ -7,3 +7,6 @@
 [submodule "minishell"]
 	path = minishell
 	url = git@github.com:strawberryShell/minishell.git
+[submodule "philosophers"]
+	path = philosophers
+	url = git@github.com:jis-kim/philosophers.git
