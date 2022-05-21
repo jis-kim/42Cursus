@@ -12,3 +12,4 @@
 ||**[push_swap](https://github.com/jis-kim/42Cursus/tree/master/push_swap)**|[![jiskim's 42 push_swap Score](https://badge42.vercel.app/api/v2/cl1nab7n9000609jvhalrzajr/project/2453081)](https://github.com/JaeSeoKim/badge42)|2022-02-18|
 ||**[minitalk](https://github.com/jis-kim/42Cursus/tree/master/minitalk)**|[![jiskim's 42 minitalk Score](https://badge42.vercel.app/api/v2/cl1nab7n9000609jvhalrzajr/project/2500671)](https://github.com/JaeSeoKim/badge42)|2022-03-03|
 |3|**[minishell](https://github.com/jis-kim/42Cursus/tree/master/minishell)**|[![jiskim's 42 minishell Score](https://badge42.vercel.app/api/v2/cl1nab7n9000609jvhalrzajr/project/2521473)](https://github.com/JaeSeoKim/badge42)|2022-04-14|
+||**[push_swap](https://github.com/jis-kim/42Cursus/tree/master/philosophers)**|[![jiskim's 42 Philosophers Score](https://badge42.vercel.app/api/v2/cl1nab7n9000609jvhalrzajr/project/2505997)](https://github.com/JaeSeoKim/badge42)|2022-05-19|
