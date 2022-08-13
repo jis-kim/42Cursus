@@ -13,3 +13,6 @@
 [submodule "miniRT"]
 	path = miniRT
 	url = git@github.com:strawberryShell/miniRT.git
+[submodule "cpp-modules"]
+	path = cpp-modules
+	url = git@github.com:jis-kim/cpp-modules.git
