@@ -13,4 +13,5 @@
 ||**[minitalk](https://github.com/jis-kim/minitalk)**|[![jiskim's 42 minitalk Score](https://badge42.vercel.app/api/v2/cl1nab7n9000609jvhalrzajr/project/2500671)](https://github.com/JaeSeoKim/badge42)|2022-03-03|
 |3|**[minishell](https://github.com/strawberryShell/minishell)**|[![jiskim's 42 minishell Score](https://badge42.vercel.app/api/v2/cl1nab7n9000609jvhalrzajr/project/2521473)](https://github.com/JaeSeoKim/badge42)|2022-04-14|
 ||**[philosophers](https://github.com/jis-kim/philosophers)**|[![jiskim's 42 Philosophers Score](https://badge42.vercel.app/api/v2/cl1nab7n9000609jvhalrzajr/project/2505997)](https://github.com/JaeSeoKim/badge42)|2022-05-18|
-|4|**[miniRT](https://github.com/strawberryShell/miniRT)**|[![jiskim's 42 miniRT Score](https://badge42.vercel.app/api/v2/cl1nab7n9000609jvhalrzajr/project/2594735)](https://github.com/JaeSeoKim/badge42)|2022-05-18|
+|4|**[miniRT](https://github.com/strawberryShell/miniRT)**|[![jiskim's 42 miniRT Score](https://badge42.vercel.app/api/v2/cl1nab7n9000609jvhalrzajr/project/2594735)](https://github.com/JaeSeoKim/badge42)|2022-06-09|
+||**[cpp-modules](https://github.com/jis-kim/cpp-modules)**||2022-08-13|
