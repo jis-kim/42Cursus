@@ -16,3 +16,6 @@
 [submodule "cpp-modules"]
 	path = cpp-modules
 	url = git@github.com:jis-kim/cpp-modules.git
+[submodule "webserv"]
+	path = webserv
+	url = https://github.com/brilliantshell/webserv.git
