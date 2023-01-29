@@ -19,3 +19,6 @@
 [submodule "webserv"]
 	path = webserv
 	url = https://github.com/brilliantshell/webserv.git
+[submodule "ft_containers"]
+	path = ft_containers
+	url = https://github.com/jis-kim/ft_containers.git
