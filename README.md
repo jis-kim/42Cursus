@@ -1,5 +1,7 @@
 # 42Cursus
 42서울 본과정 프로젝트
+
+2021-05-03 ~ 2023-05-30 진행
 |Circle|Project|Score|Date Of Completion|
 |:---:|:---:|:---:|:---:|
 |0|**[Libft](https://github.com/jis-kim/42Cursus/tree/master/libft)**|[![jiskim's 42 minishell Score](https://badge42.vercel.app/api/v2/cl1nab7n9000609jvhalrzajr/project/2521473)](https://github.com/JaeSeoKim/badge42)|2021-05-20|
@@ -17,3 +19,4 @@
 |5|**[webserv](https://github.com/brilliantshell/webserv.git)**|[![jiskim's 42 webserv Score](https://badge42.vercel.app/api/v2/cl1nab7n9000609jvhalrzajr/project/2811893)](https://github.com/JaeSeoKim/badge42)|2022-11-09|
 ||**[ft_containers](https://github.com/jis-kim/ft_containers.git)**|[![jiskim's 42 ft_containers Score](https://badge42.vercel.app/api/v2/cl1nab7n9000609jvhalrzajr/project/2875608)](https://github.com/JaeSeoKim/badge42)|2023-01-26|
 ||**[Inception](https://github.com/jis-kim/Inception.git)**|[![jiskim's 42 Inception Score](https://badge42.vercel.app/api/v2/cl1nab7n9000609jvhalrzajr/project/2953070)](https://github.com/JaeSeoKim/badge42)|2023-03-13|
+|6|**[ft_transcendence](https://github.com/GhostPangPang/GhostPong)**|[![jiskim's 42 ft_transcendence Score](https://badge42.vercel.app/api/v2/cl1nab7n9000609jvhalrzajr/project/3026284)](https://github.com/JaeSeoKim/badge42)|2023-05-30|
