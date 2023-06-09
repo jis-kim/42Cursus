@@ -25,3 +25,6 @@
 [submodule "Inception"]
 	path = Inception
 	url = git@github.com:jis-kim/Inception.git
+[submodule "GhostPong"]
+	path = GhostPong
+	url = git@github.com:GhostPangPang/GhostPong.git
